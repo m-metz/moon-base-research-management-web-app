@@ -1,6 +1,9 @@
 package com.example.moonbaseresearchmanagement.personnel;
 
 import java.io.Serializable;
+import java.util.Set;
+
+import com.example.moonbaseresearchmanagement.project.Project;
 
 import jakarta.persistence.*;
 
@@ -19,11 +22,20 @@ public class Personnel implements Serializable {
     @Column(name = "country")
     private String country;
 
+    @ManyToMany
+    @JoinTable(
+    name = "works_on", 
+    joinColumns = @JoinColumn(name = "personnel_id"), 
+    inverseJoinColumns = @JoinColumn(name = "project_id"))
+    Set<Project> listProjects;
     
+    
+    
+    
+  
 
     
-    
-    
+
     public int getPersonnel_id() {
         return personnel_id;
     }

@@ -19,7 +19,7 @@ public class GroundStation implements Serializable {
     private String country;
 
     @OneToMany(mappedBy = "ground_station")
-    private Set<EarthManager> recordings = new HashSet<>();
+    private Set<EarthManager> recordings;
 
     
     
