@@ -1,5 +1,6 @@
 package com.example.moonbaseresearchmanagement.earthmanager;
 
+import com.example.moonbaseresearchmanagement.groundstation.GroundStation;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 
 import jakarta.persistence.*;
@@ -11,5 +12,5 @@ public class EarthManager extends Personnel {
     
     @ManyToOne
     @JoinColumn(name = "station_name")
-    private GroundBase base;
+    private GroundStation base;
 }
