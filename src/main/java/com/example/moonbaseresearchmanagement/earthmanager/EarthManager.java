@@ -12,5 +12,5 @@ public class EarthManager extends Personnel {
     
     @ManyToOne
     @JoinColumn(name = "station_name")
-    private GroundStation base;
+    private GroundStation station_name;
 }
