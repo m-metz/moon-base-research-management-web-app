@@ -8,8 +8,8 @@ import jakarta.persistence.*;
 @Table(name = "earth_manager")
 public class EarthManager extends Personnel {
     
-    @Column(name = "station_name")
-    private String station_name;
     
-    
+    @ManyToOne
+    @JoinColumn(name = "station_name")
+    private GroundBase base;
 }
