@@ -24,17 +24,19 @@ public class Personnel implements Serializable {
 
     @ManyToMany
     @JoinTable(
-    name = "works_on", 
-    joinColumns = @JoinColumn(name = "personnel_id"), 
-    inverseJoinColumns = @JoinColumn(name = "project_id"))
+        name = "works_on", 
+        joinColumns = @JoinColumn(name = "personnel_id"), 
+        inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
     Set<Project> listProjects;
-    
-    
-    
-    
-  
 
-    
+    public Personnel() {}
+
+    public Personnel(int personnel_id, String name, String country) {
+        this.personnel_id = personnel_id;
+        this.name = name;
+        this.country = country;
+    }
 
     public int getPersonnel_id() {
         return personnel_id;
@@ -59,9 +61,4 @@ public class Personnel implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-
-    
-
-
-    
 }
