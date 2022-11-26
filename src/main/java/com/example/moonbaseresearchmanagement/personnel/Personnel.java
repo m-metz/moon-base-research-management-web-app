@@ -1,6 +1,5 @@
 package com.example.moonbaseresearchmanagement.personnel;
 
-import java.io.Serializable;
 import java.util.Set;
 import com.example.moonbaseresearchmanagement.project.Project;
 import jakarta.persistence.*;
@@ -8,7 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "personnel")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Personnel implements Serializable {
+public class Personnel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "personnel_id")
