@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "earth_manager")
 public class EarthManager extends Personnel {
-    
     @ManyToOne
     @JoinColumn(name = "station_name")
     private GroundStation station_name;
@@ -17,7 +16,7 @@ public class EarthManager extends Personnel {
         super(personnel_id, name, country);
         this.station_name = station_name;
     }
-    
+
     public GroundStation getStation_name() {
         return station_name;
     }
@@ -25,8 +24,4 @@ public class EarthManager extends Personnel {
     public void setStation_name(GroundStation station_name) {
         this.station_name = station_name;
     }
-
-  
-
-    
 }

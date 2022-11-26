@@ -1,15 +1,12 @@
 package com.example.moonbaseresearchmanagement.groundstation;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
-
+import java.io.Serializable;
+import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ground_station" )
+@Table(name = "ground_station")
 public class GroundStation implements Serializable {
     @Id
     @Column(name = "name")
@@ -20,7 +17,4 @@ public class GroundStation implements Serializable {
 
     @OneToMany(mappedBy = "ground_station")
     private Set<EarthManager> recordings;
-
-    
-    
 }
