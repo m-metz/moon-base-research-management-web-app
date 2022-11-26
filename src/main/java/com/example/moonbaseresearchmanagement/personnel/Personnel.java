@@ -2,9 +2,7 @@ package com.example.moonbaseresearchmanagement.personnel;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import com.example.moonbaseresearchmanagement.project.Project;
-
 import jakarta.persistence.*;
 
 @Entity

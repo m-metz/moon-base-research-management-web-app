@@ -1,8 +1,8 @@
 package com.example.moonbaseresearchmanagement.groundstation;
 
-import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import java.io.Serializable;
 import java.util.Set;
+import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import jakarta.persistence.*;
 
 @Entity

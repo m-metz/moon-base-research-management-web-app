@@ -2,7 +2,6 @@ package com.example.moonbaseresearchmanagement.earthmanager;
 
 import com.example.moonbaseresearchmanagement.groundstation.GroundStation;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
-
 import jakarta.persistence.*;
 
 @Entity
