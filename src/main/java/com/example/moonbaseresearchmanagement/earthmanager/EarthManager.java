@@ -9,18 +9,18 @@ import jakarta.persistence.*;
 public class EarthManager extends Personnel {
     @ManyToOne
     @JoinColumn(name = "station_name")
-    private GroundStation station_name;
+    private GroundStation stationName;
 
-    public EarthManager(int personnel_id, String name, String country, GroundStation station_name) {
-        super(personnel_id, name, country);
-        this.station_name = station_name;
+    public EarthManager(int personnelId, String name, String country, GroundStation stationName) {
+        super(personnelId, name, country);
+        this.stationName = stationName;
     }
 
     public GroundStation getStation_name() {
-        return station_name;
+        return stationName;
     }
 
     public void setStation_name(GroundStation station_name) {
-        this.station_name = station_name;
+        this.stationName = station_name;
     }
 }

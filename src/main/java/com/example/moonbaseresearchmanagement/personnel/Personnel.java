@@ -1,6 +1,6 @@
 package com.example.moonbaseresearchmanagement.personnel;
 
-import java.util.Set;
+import java.util.List;
 import com.example.moonbaseresearchmanagement.project.Project;
 import jakarta.persistence.*;
 
@@ -11,12 +11,10 @@ public class Personnel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "personnel_id")
-    private int personnel_id;
+    private int personnelId;
     
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "country")
     private String country;
 
     @ManyToMany
@@ -25,37 +23,45 @@ public class Personnel {
         joinColumns = @JoinColumn(name = "personnel_id"), 
         inverseJoinColumns = @JoinColumn(name = "project_id")
     )
-    Set<Project> listProjects;
+    List<Project> listProjects;
 
     public Personnel() {}
 
-    public Personnel(int personnel_id, String name, String country) {
-        this.personnel_id = personnel_id;
+    public Personnel(int personnelId, String name, String country) {
+        this.personnelId = personnelId;
         this.name = name;
         this.country = country;
     }
 
-    public int getPersonnel_id() {
-        return personnel_id;
+    public int getPersonnelId() {
+        return personnelId;
+    }
+
+    public void setPersonnelId(int personnelId) {
+        this.personnelId = personnelId;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setPersonnel_id(int personnel_id) {
-        this.personnel_id = personnel_id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<Project> getListProjects() {
+        return listProjects;
+    }
+
+    public void setListProjects(List<Project> listProjects) {
+        this.listProjects = listProjects;
     }
 }

@@ -8,10 +8,8 @@ import jakarta.persistence.*;
 @Table(name = "ground_station")
 public class GroundStation {
     @Id
-    @Column(name = "name")
     private String name;
-
-    @Column(name = "country")
+    
     private String country;
 
     @OneToMany(mappedBy = "ground_station")

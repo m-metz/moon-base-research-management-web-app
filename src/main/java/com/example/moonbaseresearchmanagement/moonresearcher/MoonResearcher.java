@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "moon_reseracher")
 public class MoonResearcher extends Personnel {
-    @Column(name = "job_title")
-    private String job_title;
+    private String jobTitle;
 
-    @Column(name = "base_id")
-    private int base_id;
+    private int baseId;
 }
