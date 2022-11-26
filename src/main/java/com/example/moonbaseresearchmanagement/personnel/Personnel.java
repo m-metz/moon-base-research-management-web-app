@@ -23,7 +23,7 @@ public class Personnel {
         joinColumns = @JoinColumn(name = "personnel_id"), 
         inverseJoinColumns = @JoinColumn(name = "project_id")
     )
-    List<Project> listProjects;
+    private List<Project> listProjects;
 
     public Personnel() {}
 

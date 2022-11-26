@@ -19,5 +19,5 @@ public class Project{
 
     
     @ManyToMany(mappedBy = "listProjects")
-    List<Personnel> projectWorkers;
+    private List<Personnel> projectWorkers;
 }
