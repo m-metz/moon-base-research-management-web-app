@@ -1,6 +1,6 @@
 package com.example.moonbaseresearchmanagement.groundstation;
 
-import java.util.Set;
+import java.util.List;
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import jakarta.persistence.*;
 
@@ -13,5 +13,5 @@ public class GroundStation {
     private String country;
 
     @OneToMany(mappedBy = "ground_station")
-    private Set<EarthManager> recordings;
+    private List<EarthManager> recordings;
 }

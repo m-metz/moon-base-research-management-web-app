@@ -1,7 +1,6 @@
 package com.example.moonbaseresearchmanagement.project;
 
-import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 
@@ -11,14 +10,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "project")
-public class Project implements Serializable {
+public class Project{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
-    private int project_id;
+    private int projectId;
 
     
     @ManyToMany(mappedBy = "listProjects")
-    Set<Personnel> projectWorkers;
+    List<Personnel> projectWorkers;
 }
