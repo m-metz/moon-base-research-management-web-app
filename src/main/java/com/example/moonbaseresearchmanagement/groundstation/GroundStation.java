@@ -13,5 +13,5 @@ public class GroundStation {
     private String country;
 
     @OneToMany(mappedBy = "ground_station")
-    private List<EarthManager> recordings;
+    private List<EarthManager> listEarthManagers;
 }
