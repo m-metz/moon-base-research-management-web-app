@@ -15,7 +15,30 @@ public class Rocket {
     @Column(name = "rocket_id")
     private int rocketId;
 
+    private String name;
+
     @OneToMany(mappedBy = "rocket")
     private List<Transport> listTransports;
+
+    public Rocket () {}
+
+    public Rocket(int rocketId, String name) {
+        this.rocketId = rocketId;
+        this.name = name;
+    }
+
+    public int getRocketId() {
+        return rocketId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Transport> getListTransports() {
+        return listTransports;
+    }
+
+    
 
 }

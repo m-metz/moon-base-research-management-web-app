@@ -2,6 +2,7 @@ package com.example.moonbaseresearchmanagement.moonresearcher;
 
 import java.util.List;
 
+import com.example.moonbaseresearchmanagement.base.Base;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 import com.example.moonbaseresearchmanagement.transport.Transport;
 
@@ -11,9 +12,12 @@ import jakarta.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "moon_researcher")
 public class MoonResearcher extends Personnel {
+    
     private String jobTitle;
 
-    private int baseId;
+    @ManyToOne
+    @JoinColumn(name = "base_id")
+    private Base baseId;
 
     @ManyToMany
     @JoinTable(
@@ -21,6 +25,6 @@ public class MoonResearcher extends Personnel {
         joinColumns = @JoinColumn(name = "personnel_id"), 
         inverseJoinColumns = @JoinColumn(name = "transport_id")
     )
-    List<Transport> listTransports;
+    private List<Transport> listTransports;
 
 }
