@@ -9,9 +9,13 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "rocket")
 public class Rocket {
-    
 
-@OneToMany(mappedBy = "rocket")
-private List<Transport> listTransports;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rocket_id")
+    private int rocketId;
+
+    @OneToMany(mappedBy = "rocket")
+    private List<Transport> listTransports;
 
 }
