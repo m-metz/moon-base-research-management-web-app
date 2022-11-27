@@ -73,3 +73,4 @@ public class ResearchEquipment {
         this.base = base;
     }
 
+}

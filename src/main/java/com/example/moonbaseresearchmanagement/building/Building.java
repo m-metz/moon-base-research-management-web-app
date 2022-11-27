@@ -90,4 +90,5 @@ public class Building {
     public void setBuildingProjects(List<Project> buildingProjects) {
         this.buildingProjects = buildingProjects;
     }
+}
  

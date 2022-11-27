@@ -118,3 +118,4 @@ public class MoonResearcher extends Personnel {
     public void setListTransports(List<Transport> listTransports) {
         this.listTransports = listTransports;
     }
+}
