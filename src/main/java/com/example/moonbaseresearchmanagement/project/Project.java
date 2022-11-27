@@ -6,6 +6,7 @@ import com.example.moonbaseresearchmanagement.building.Building;
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
+import com.example.moonbaseresearchmanagement.researchtasks.ResearchTask;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -38,7 +39,7 @@ public class Project{
     @JoinColumn(name = "building_id")
     private Building building;
 
-    @OneToMany(mappedBy = "researchTasks")
+    @OneToMany(mappedBy = "project")
     private List<ResearchTask> projectTasks;
 
 }
