@@ -29,5 +29,32 @@ public class Base {
     @OneToMany(mappedBy = "base")
     private List<ResearchEquipment> baseEquipments;
 
+    public int getBaseID(){
+        return baseId;
+    }
+
+    public Base setBaseID(int id){
+        this.baseId = id;
+        return this;
+    }
+
+    public String getName(){
+        return name;    
+    }
+
+    public Base setName(String name){
+        this.name = name;
+        return this;
+    }
+
+    public String getLocation(){
+        return location;
+    }
+
+    public Base setLocation(String location){
+        this.location = location;
+        return this;
+    }
+
 
 }
