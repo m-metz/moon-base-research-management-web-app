@@ -15,8 +15,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "project")
-public class Project{
-    
+public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
@@ -24,7 +23,7 @@ public class Project{
 
     private String name;
 
-    
+
     @ManyToMany(mappedBy = "listProjects")
     private List<Personnel> projectWorkers;
 
@@ -35,7 +34,7 @@ public class Project{
     @ManyToOne
     @JoinColumn(name = "e_manager_id")
     private EarthManager earthManager;
-    
+
     @ManyToOne
     @JoinColumn(name = "building_id")
     private Building building;
@@ -135,8 +134,3 @@ public class Project{
     public void setProjectTasks(List<ResearchTask> projectTasks) {
         this.projectTasks = projectTasks;
     }
-
-    
-
-
-}

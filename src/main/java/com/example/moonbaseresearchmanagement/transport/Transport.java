@@ -11,7 +11,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "transport")
 public class Transport {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transport_id")
@@ -25,14 +24,15 @@ public class Transport {
 
     private LocalDateTime time;
 
-    private String fromTo; 
-    
+    private String fromTo;
+
     @ManyToMany(mappedBy = "listTransports")
     private List<MoonResearcher> listMoonReserachers;
 
-    public Transport(){}
-    
-    public Transport(int transportId, Rocket rocketId, String arrivalDeparture, LocalDateTime time, String fromTo) {
+    public Transport() {}
+
+    public Transport(int transportId, Rocket rocketId, String arrivalDeparture, LocalDateTime time,
+        String fromTo) {
         this.transportId = transportId;
         this.rocket = rocketId;
         this.arrivalDeparture = arrivalDeparture;
@@ -119,7 +119,4 @@ public class Transport {
     public void setListMoonReserachers(List<MoonResearcher> listMoonReserachers) {
         this.listMoonReserachers = listMoonReserachers;
     }
-
-    
-
 }

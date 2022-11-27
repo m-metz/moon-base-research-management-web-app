@@ -14,6 +14,7 @@ import jakarta.persistence.*;
 @Table(name = "moon_manager")
 public class MoonManager extends MoonResearcher {
     
+
     @OneToMany(mappedBy = "moonManager")
     private List<Project> managesProjects = new ArrayList<>();
 

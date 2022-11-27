@@ -1,4 +1,5 @@
 package com.example.moonbaseresearchmanagement.base;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +12,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "base")
 public class Base {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "base_id")
-    private int baseId;
+    private Long baseId;
 
     private String name;
 
@@ -114,5 +114,30 @@ public class Base {
     };
 
 
+    public Long getBaseID() {
+        return baseId;
+    }
 
+    public Base setBaseID(Long id) {
+        this.baseId = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Base setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Base setLocation(String location) {
+        this.location = location;
+        return this;
+    }
 }

@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "rocket")
 public class Rocket {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rocket_id")
@@ -21,7 +20,7 @@ public class Rocket {
     @OneToMany(mappedBy = "rocket")
     private List<Transport> listTransports = new ArrayList<>();
 
-    public Rocket () {}
+    public Rocket() {}
 
     public Rocket(int rocketId, String name) {
         this.rocketId = rocketId;
@@ -44,7 +43,4 @@ public class Rocket {
     public List<Transport> getListTransports() {
         return listTransports;
     }
-
-    
-
 }

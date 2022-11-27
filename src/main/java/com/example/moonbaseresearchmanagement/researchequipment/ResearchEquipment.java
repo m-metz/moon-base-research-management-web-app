@@ -20,6 +20,7 @@ public class ResearchEquipment {
     @JoinColumn(name = "base_id")
     private Base base;
 
+
     public ResearchEquipment() {}
 
     
@@ -72,5 +73,3 @@ public class ResearchEquipment {
         this.base = base;
     }
 
-    
-}
