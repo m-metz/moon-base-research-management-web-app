@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "api/v1/moonbase")
+@RequestMapping(path = "api/v1/base")
 public class BaseController {
 
    // private final BaseService baseService;
