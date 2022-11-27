@@ -40,6 +40,38 @@ public class Transport {
         this.fromTo = fromTo;
     }
 
+    
+
+    public Transport(Rocket rocket, String arrivalDeparture, LocalDateTime time, String fromTo) {
+        this.rocket = rocket;
+        this.arrivalDeparture = arrivalDeparture;
+        this.time = time;
+        this.fromTo = fromTo;
+    }
+
+    
+
+    public Transport(int transportId, Rocket rocket, String arrivalDeparture, LocalDateTime time, String fromTo,
+            List<MoonResearcher> listMoonReserachers) {
+        this.transportId = transportId;
+        this.rocket = rocket;
+        this.arrivalDeparture = arrivalDeparture;
+        this.time = time;
+        this.fromTo = fromTo;
+        this.listMoonReserachers = listMoonReserachers;
+    }
+
+    
+
+    public Transport(Rocket rocket, String arrivalDeparture, LocalDateTime time, String fromTo,
+            List<MoonResearcher> listMoonReserachers) {
+        this.rocket = rocket;
+        this.arrivalDeparture = arrivalDeparture;
+        this.time = time;
+        this.fromTo = fromTo;
+        this.listMoonReserachers = listMoonReserachers;
+    }
+
     public int getTransportId() {
         return transportId;
     }
