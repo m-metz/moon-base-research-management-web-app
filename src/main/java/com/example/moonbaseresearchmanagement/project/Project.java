@@ -134,3 +134,4 @@ public class Project {
     public void setProjectTasks(List<ResearchTask> projectTasks) {
         this.projectTasks = projectTasks;
     }
+}

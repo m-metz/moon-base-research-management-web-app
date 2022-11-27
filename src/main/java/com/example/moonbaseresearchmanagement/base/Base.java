@@ -15,7 +15,7 @@ public class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "base_id")
-    private Long baseId;
+    private int baseId;
 
     private String name;
 
@@ -114,30 +114,13 @@ public class Base {
     };
 
 
-    public Long getBaseID() {
+    public int getBaseID() {
         return baseId;
     }
 
-    public Base setBaseID(Long id) {
+    public Base setBaseID(int id) {
         this.baseId = id;
         return this;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Base setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public Base setLocation(String location) {
-        this.location = location;
-        return this;
-    }
 }
