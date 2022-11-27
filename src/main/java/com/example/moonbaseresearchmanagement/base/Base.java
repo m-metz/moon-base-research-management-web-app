@@ -14,7 +14,7 @@ public class Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "base_id")
-    private int baseId;
+    private Long baseId;
 
     private String name;
 
@@ -29,11 +29,11 @@ public class Base {
     @OneToMany(mappedBy = "base")
     private List<ResearchEquipment> baseEquipments;
 
-    public int getBaseID(){
+    public Long getBaseID(){
         return baseId;
     }
 
-    public Base setBaseID(int id){
+    public Base setBaseID(Long id){
         this.baseId = id;
         return this;
     }
