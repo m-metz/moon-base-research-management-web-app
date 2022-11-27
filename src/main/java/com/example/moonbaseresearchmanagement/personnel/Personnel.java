@@ -1,7 +1,9 @@
 package com.example.moonbaseresearchmanagement.personnel;
 
 import java.util.List;
+
 import com.example.moonbaseresearchmanagement.project.Project;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,15 +14,15 @@ public class Personnel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "personnel_id")
     private int personnelId;
-    
+
     private String name;
 
     private String country;
 
     @ManyToMany
     @JoinTable(
-        name = "works_on", 
-        joinColumns = @JoinColumn(name = "personnel_id"), 
+        name = "works_on",
+        joinColumns = @JoinColumn(name = "personnel_id"),
         inverseJoinColumns = @JoinColumn(name = "project_id")
     )
     private List<Project> listProjects;

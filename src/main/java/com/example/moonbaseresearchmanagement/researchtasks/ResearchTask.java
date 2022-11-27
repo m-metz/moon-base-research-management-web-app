@@ -5,7 +5,7 @@ import com.example.moonbaseresearchmanagement.project.Project;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "research_task" )
+@Table(name = "research_task")
 public class ResearchTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class ResearchTask {
     private String title;
 
     private String notes;
-    
+
     private String status;
 
     @ManyToOne

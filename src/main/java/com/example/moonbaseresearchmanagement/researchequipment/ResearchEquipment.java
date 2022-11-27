@@ -19,5 +19,4 @@ public class ResearchEquipment {
     @ManyToOne
     @JoinColumn(name = "base_id")
     private Base base;
-    
 }

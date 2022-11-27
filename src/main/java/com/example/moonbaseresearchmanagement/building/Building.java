@@ -24,5 +24,4 @@ public class Building {
 
     @OneToMany(mappedBy = "building")
     private List<Project> buildingProjects;
-    
 }

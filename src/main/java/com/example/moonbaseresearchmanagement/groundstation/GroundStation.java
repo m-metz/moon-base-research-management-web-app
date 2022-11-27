@@ -1,7 +1,9 @@
 package com.example.moonbaseresearchmanagement.groundstation;
 
 import java.util.List;
+
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,7 +11,7 @@ import jakarta.persistence.*;
 public class GroundStation {
     @Id
     private String name;
-    
+
     private String country;
 
     @OneToMany(mappedBy = "groundStation")

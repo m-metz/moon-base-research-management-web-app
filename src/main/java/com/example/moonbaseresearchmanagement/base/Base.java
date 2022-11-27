@@ -1,4 +1,5 @@
 package com.example.moonbaseresearchmanagement.base;
+
 import java.util.List;
 
 import com.example.moonbaseresearchmanagement.building.Building;
@@ -10,7 +11,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "base")
 public class Base {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "base_id")
@@ -29,32 +29,30 @@ public class Base {
     @OneToMany(mappedBy = "base")
     private List<ResearchEquipment> baseEquipments;
 
-    public Long getBaseID(){
+    public Long getBaseID() {
         return baseId;
     }
 
-    public Base setBaseID(Long id){
+    public Base setBaseID(Long id) {
         this.baseId = id;
         return this;
     }
 
-    public String getName(){
-        return name;    
+    public String getName() {
+        return name;
     }
 
-    public Base setName(String name){
+    public Base setName(String name) {
         this.name = name;
         return this;
     }
 
-    public String getLocation(){
+    public String getLocation() {
         return location;
     }
 
-    public Base setLocation(String location){
+    public Base setLocation(String location) {
         this.location = location;
         return this;
     }
-
-
 }

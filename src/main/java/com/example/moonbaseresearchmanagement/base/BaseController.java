@@ -1,30 +1,27 @@
 package com.example.moonbaseresearchmanagement.base;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "api/v1/moonbase")
 public class BaseController {
-
     private final BaseService baseService;
-    
+
     @Autowired
-    public BaseController(BaseService baseService){
+    public BaseController(BaseService baseService) {
         this.baseService = baseService;
     }
 
     @GetMapping
-    public List<Base> getBases(){
+    public List<Base> getBases() {
         return baseService.getAllBases();
     }
 
     @PostMapping
-    public void registerNewBase(@RequestBody Base base){
+    public void registerNewBase(@RequestBody Base base) {
         baseService.addNewBase(base);
     }
-    
 }
