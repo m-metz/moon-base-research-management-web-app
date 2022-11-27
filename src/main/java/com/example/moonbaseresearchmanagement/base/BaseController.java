@@ -10,7 +10,21 @@ import java.util.List;
 @RequestMapping(path = "api/v1/moonbase")
 public class BaseController {
 
-   // private final BaseService baseService;
+    private final BaseService baseService;
     
+    @Autowired
+    public BaseController(BaseService baseService){
+        this.baseService = baseService;
+    }
+
+    @GetMapping
+    public List<Base> getBases(){
+        return baseService.getAllBases();
+    }
+
+    @PostMapping
+    public void registerNewBase(@RequestBody Base base){
+        baseService.addNewBase(base);
+    }
     
 }
