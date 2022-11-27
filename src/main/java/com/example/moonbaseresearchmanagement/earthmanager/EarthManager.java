@@ -13,7 +13,7 @@ import jakarta.persistence.*;
 public class EarthManager extends Personnel {
     @ManyToOne
     @JoinColumn(name = "station_name")
-    private GroundStation stationName;
+    private GroundStation groundStation;
 
     @OneToMany(mappedBy = "earthManager")
     private List<Project> managesProjects;
@@ -21,14 +21,14 @@ public class EarthManager extends Personnel {
 
     public EarthManager(int personnelId, String name, String country, GroundStation stationName) {
         super(personnelId, name, country);
-        this.stationName = stationName;
+        this.groundStation = stationName;
     }
 
-    public GroundStation getStation_name() {
-        return stationName;
+    public GroundStation getGroundStation() {
+        return groundStation;
     }
 
-    public void setStation_name(GroundStation station_name) {
-        this.stationName = station_name;
+    public void setGroundStation(GroundStation station_name) {
+        this.groundStation = station_name;
     }
 }

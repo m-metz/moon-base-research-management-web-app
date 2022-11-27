@@ -19,7 +19,7 @@ public class Transport {
 
     @ManyToOne
     @JoinColumn(name = "rocket_id")
-    private Rocket rocketId;
+    private Rocket rocket;
 
     private String arrivalDeparture;
 
@@ -34,7 +34,7 @@ public class Transport {
     
     public Transport(int transportId, Rocket rocketId, String arrivalDeparture, LocalDateTime time, String fromTo) {
         this.transportId = transportId;
-        this.rocketId = rocketId;
+        this.rocket = rocketId;
         this.arrivalDeparture = arrivalDeparture;
         this.time = time;
         this.fromTo = fromTo;
@@ -44,8 +44,8 @@ public class Transport {
         return transportId;
     }
 
-    public Rocket getRocketId() {
-        return rocketId;
+    public Rocket getRocket() {
+        return rocket;
     }
 
     public String getArrivalDeparture() {
@@ -68,8 +68,8 @@ public class Transport {
         this.transportId = transportId;
     }
 
-    public void setRocketId(Rocket rocketId) {
-        this.rocketId = rocketId;
+    public void setRocket(Rocket rocket) {
+        this.rocket = rocket;
     }
 
     public void setArrivalDeparture(String arrivalDeparture) {
