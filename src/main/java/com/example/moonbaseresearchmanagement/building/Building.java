@@ -1,7 +1,10 @@
 package com.example.moonbaseresearchmanagement.building;
 
 
+import java.util.List;
+
 import com.example.moonbaseresearchmanagement.base.Base;
+import com.example.moonbaseresearchmanagement.project.Project;
 
 import jakarta.persistence.*;
 
@@ -18,5 +21,8 @@ public class Building {
     @ManyToOne
     @JoinColumn(name = "base_id")
     private Base base;
+
+    @OneToMany(mappedBy = "building")
+    private List<Project> buildingProjects;
     
 }

@@ -2,6 +2,9 @@ package com.example.moonbaseresearchmanagement.project;
 
 import java.util.List;
 
+import com.example.moonbaseresearchmanagement.building.Building;
+import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
+import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 
 import jakarta.persistence.Entity;
@@ -17,7 +20,25 @@ public class Project{
     @Column(name = "project_id")
     private int projectId;
 
+    private String name;
+
     
     @ManyToMany(mappedBy = "listProjects")
     private List<Personnel> projectWorkers;
+
+    @ManyToOne
+    @JoinColumn(name = "m_manager_id")
+    private MoonManager moonManager;
+
+    @ManyToOne
+    @JoinColumn(name = "e_manager_id")
+    private EarthManager earthManager;
+    
+    @ManyToOne
+    @JoinColumn(name = "building_id")
+    private Building building;
+
+    @OneToMany(mappedBy = "researchTasks")
+    private List<ResearchTask> projectTasks;
+
 }
