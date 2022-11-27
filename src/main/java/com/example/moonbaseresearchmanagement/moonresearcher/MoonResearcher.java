@@ -17,7 +17,7 @@ public class MoonResearcher extends Personnel {
 
     @ManyToOne
     @JoinColumn(name = "base_id")
-    private Base baseId;
+    private Base base;
 
     @ManyToMany
     @JoinTable(
