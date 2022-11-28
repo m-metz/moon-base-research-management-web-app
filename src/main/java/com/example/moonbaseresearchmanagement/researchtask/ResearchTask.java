@@ -24,8 +24,6 @@ public class ResearchTask {
 
     public ResearchTask () {}
 
-    
-
     public ResearchTask(int taskId, String title, String notes, String status, Project project) {
         this.taskId = taskId;
         this.title = title;

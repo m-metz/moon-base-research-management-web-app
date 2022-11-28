@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MoonResearcherRepository extends JpaRepository<MoonResearcher, Integer> {
-    Optional<MoonResearcher> findMoonResearcherByName(String name);
+    
     
 }

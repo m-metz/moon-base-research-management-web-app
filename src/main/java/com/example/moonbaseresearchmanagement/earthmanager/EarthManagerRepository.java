@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EarthManagerRepository extends JpaRepository<EarthManager, Integer> {
-    Optional<EarthManager> findEarthManagerByPersonnelId(int personnelId);
+    
 
 
 }

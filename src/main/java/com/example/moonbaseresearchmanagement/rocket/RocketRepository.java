@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RocketRepository extends JpaRepository<Rocket, Integer> {
-    Optional<Rocket> findRocketByName(String name);
+    
 }

@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResearchTaskRepository extends JpaRepository<ResearchTask, Integer> {
-    Optional<ResearchTask> findResearchTaskByName(String name);
+    
 }
