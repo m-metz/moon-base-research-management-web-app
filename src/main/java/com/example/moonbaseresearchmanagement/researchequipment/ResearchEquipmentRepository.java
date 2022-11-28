@@ -1,5 +1,11 @@
 package com.example.moonbaseresearchmanagement.researchequipment;
 
-public class ResearchEquipmentRepository {
-    
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ResearchEquipmentRepository extends JpaRepository<ResearchEquipment, Integer> {
+    Optional<ResearchEquipment> findResearchEquipamentByName(String name);
 }
