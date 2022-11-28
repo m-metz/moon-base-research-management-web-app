@@ -1,4 +1,4 @@
-package com.example.moonbaseresearchmanagement.researchtasks;
+package com.example.moonbaseresearchmanagement.researchtask;
 
 import com.example.moonbaseresearchmanagement.project.Project;
 
