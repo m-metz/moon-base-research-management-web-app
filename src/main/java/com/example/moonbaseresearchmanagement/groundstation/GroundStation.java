@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -15,6 +16,7 @@ public class GroundStation {
 
     private String country;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "groundStation")
     private List<EarthManager> listEarthManagers = new ArrayList<>();
 

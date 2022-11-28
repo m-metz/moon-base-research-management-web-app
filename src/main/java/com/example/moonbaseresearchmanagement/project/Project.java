@@ -8,6 +8,7 @@ import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 import com.example.moonbaseresearchmanagement.researchtask.ResearchTask;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -21,7 +22,7 @@ public class Project {
 
     private String name;
 
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "listProjects")
     private List<Personnel> projectWorkers;
 
@@ -37,6 +38,7 @@ public class Project {
     @JoinColumn(name = "building_id")
     private Building building;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "project")
     private List<ResearchTask> projectTasks =new ArrayList<>();
 

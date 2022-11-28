@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.moonbaseresearchmanagement.building.Building;
 import com.example.moonbaseresearchmanagement.moonresearcher.MoonResearcher;
 import com.example.moonbaseresearchmanagement.researchequipment.ResearchEquipment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -21,12 +22,15 @@ public class Base {
 
     private String location;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "base")
     private List<MoonResearcher> baseMoonResearchers = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "base")
     private List<Building> baseBuildings = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "base")
     private List<ResearchEquipment> baseEquipments = new ArrayList<>();
     

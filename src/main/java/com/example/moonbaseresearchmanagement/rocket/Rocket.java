@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.moonbaseresearchmanagement.transport.Transport;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -17,6 +18,7 @@ public class Rocket {
 
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "rocket")
     private List<Transport> listTransports = new ArrayList<>();
 
@@ -43,4 +45,18 @@ public class Rocket {
     public List<Transport> getListTransports() {
         return listTransports;
     }
+
+    public void setRocketId(int rocketId) {
+        this.rocketId = rocketId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setListTransports(List<Transport> listTransports) {
+        this.listTransports = listTransports;
+    }
+
+    
 }

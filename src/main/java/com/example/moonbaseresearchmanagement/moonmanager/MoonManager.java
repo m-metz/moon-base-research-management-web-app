@@ -7,6 +7,7 @@ import com.example.moonbaseresearchmanagement.base.Base;
 import com.example.moonbaseresearchmanagement.moonresearcher.MoonResearcher;
 import com.example.moonbaseresearchmanagement.project.Project;
 import com.example.moonbaseresearchmanagement.transport.Transport;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -14,7 +15,7 @@ import jakarta.persistence.*;
 @Table(name = "moon_manager")
 public class MoonManager extends MoonResearcher {
     
-
+    @JsonIgnore
     @OneToMany(mappedBy = "moonManager")
     private List<Project> managesProjects = new ArrayList<>();
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.moonbaseresearchmanagement.moonresearcher.MoonResearcher;
 import com.example.moonbaseresearchmanagement.rocket.Rocket;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class Transport {
 
     private String fromTo;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "listTransports")
     private List<MoonResearcher> listMoonReserachers;
 
