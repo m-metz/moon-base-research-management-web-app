@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MoonManagerRepository extends JpaRepository<MoonManager, Integer> {
 
-    Optional<MoonManager> findMoonManagerByName(String name);
+    
     
 }
