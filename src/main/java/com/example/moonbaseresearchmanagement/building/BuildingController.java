@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,6 @@ public class BuildingController {
     public List<Building> getBases() {
         return buildingService.getAllBuildings();
     }
+
     
 }

@@ -9,8 +9,6 @@ import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 import com.example.moonbaseresearchmanagement.researchtasks.ResearchTask;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import jakarta.persistence.*;
 
 @Entity

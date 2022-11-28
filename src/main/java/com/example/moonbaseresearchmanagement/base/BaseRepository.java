@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface BaseRepository extends JpaRepository<Base, Integer> {
     Optional<Base> findByName(String name);
     Optional<Base> findBaseByBaseId(int baseId);
+
 }

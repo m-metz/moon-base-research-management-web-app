@@ -20,8 +20,8 @@ public class BaseController {
         return baseService.getAllBases();
     }
 
-    @PostMapping
-    public void registerNewBase(@RequestBody Base base) {
-        baseService.addNewBase(base);
+   @PostMapping
+   public void registerNewBase(@RequestBody Base base) {
+       baseService.addNewBase(base);
     }
 }
