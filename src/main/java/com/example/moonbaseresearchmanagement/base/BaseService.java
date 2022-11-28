@@ -20,15 +20,15 @@ public class BaseService {
     }
 
     public void addNewBase(Base base) {
-        Optional<Base> baseById = baseRepository.findById(base.getBaseID());
+        Optional<Base> baseById = baseRepository.findBaseByBaseId(base.getBaseID());
         if (baseById.isPresent()) {
             throw new IllegalStateException("Base already exists");
         }
         baseRepository.save(base);
     }
 
-    public Base getBaseById(long baseId) {
-        Optional<Base> baseById = baseRepository.findById(baseId);
+    public Base getBaseById(int baseId) {
+        Optional<Base> baseById = baseRepository.findBaseByBaseId(baseId);
         if (!baseById.isPresent()) {
             throw new IllegalStateException("Base does not exist");
         }

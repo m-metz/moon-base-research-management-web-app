@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BaseRepository extends JpaRepository<Base, Long> {
-    Optional<Base> findByName(String name);
+    Optional<Base> findBaseByBaseId(int baseid);
 }
