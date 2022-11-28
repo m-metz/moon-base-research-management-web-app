@@ -1,5 +1,12 @@
 package com.example.moonbaseresearchmanagement.personnel;
 
-public class PersonnelRepository {
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PersonnelRepository extends JpaRepository<Personnel, Integer> {
+    Optional<Personnel> findPersonnelByName(String name);
     
 }
