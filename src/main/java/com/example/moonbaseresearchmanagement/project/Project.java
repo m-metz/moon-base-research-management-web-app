@@ -7,7 +7,7 @@ import com.example.moonbaseresearchmanagement.building.Building;
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
 import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
-import com.example.moonbaseresearchmanagement.researchtasks.ResearchTask;
+import com.example.moonbaseresearchmanagement.researchtask.ResearchTask;
 
 import jakarta.persistence.*;
 
