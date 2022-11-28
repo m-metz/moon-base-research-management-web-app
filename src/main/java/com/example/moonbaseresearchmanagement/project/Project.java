@@ -22,7 +22,7 @@ public class Project {
 
     private String name;
 
-    @JsonIgnore
+   
     @ManyToMany(mappedBy = "listProjects")
     private List<Personnel> projectWorkers;
 
