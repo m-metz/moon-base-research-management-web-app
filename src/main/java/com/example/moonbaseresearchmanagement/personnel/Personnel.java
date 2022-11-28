@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.moonbaseresearchmanagement.project.Project;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class Personnel {
         joinColumns = @JoinColumn(name = "personnel_id"),
         inverseJoinColumns = @JoinColumn(name = "project_id")
     )
+    @JsonIgnore
     private List<Project> listProjects = new ArrayList<>();
 
     public Personnel() {}
