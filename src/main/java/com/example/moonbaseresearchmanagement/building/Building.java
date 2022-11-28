@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.example.moonbaseresearchmanagement.base.Base;
 import com.example.moonbaseresearchmanagement.project.Project;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -23,6 +24,7 @@ public class Building {
     @JoinColumn(name = "base_id")
     private Base base;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "building")
     private List<Project> buildingProjects = new ArrayList<>();
     

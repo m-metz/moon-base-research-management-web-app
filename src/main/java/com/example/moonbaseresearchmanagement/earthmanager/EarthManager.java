@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.moonbaseresearchmanagement.groundstation.GroundStation;
 import com.example.moonbaseresearchmanagement.personnel.Personnel;
 import com.example.moonbaseresearchmanagement.project.Project;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -16,6 +17,7 @@ public class EarthManager extends Personnel {
     @JoinColumn(name = "station_name")
     private GroundStation groundStation;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "earthManager")
     private List<Project> managesProjects = new ArrayList<>();
 
