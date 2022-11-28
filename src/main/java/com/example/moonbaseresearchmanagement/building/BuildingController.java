@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(path = "api/v1/building")
 public class BuildingController {
 
-    @RequestMapping(path = "api/v1/building")
-    public class BaseController {
     private final BuildingService buildingService;
 
     @Autowired
-    public BaseController(BuildingService buildingService) {
+    public BuildingController(BuildingService buildingService) {
         this.buildingService = buildingService;
     }
 
     @GetMapping
-    public List<Building> getBases() {
+    public List<Building> getBuildings() {
         return buildingService.getAllBuildings();
     }
 

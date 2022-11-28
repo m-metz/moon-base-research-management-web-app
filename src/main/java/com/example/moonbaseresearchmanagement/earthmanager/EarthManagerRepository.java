@@ -1,5 +1,13 @@
 package com.example.moonbaseresearchmanagement.earthmanager;
 
-public class EarthManagerRepository {
-    
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EarthManagerRepository extends JpaRepository<EarthManager, Integer> {
+    Optional<EarthManager> findEarthManagerByPersonnelId(int personnelId);
+
+
 }
