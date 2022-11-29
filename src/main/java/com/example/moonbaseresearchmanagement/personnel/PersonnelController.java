@@ -51,13 +51,16 @@ public class PersonnelController {
         }
     
 
-    @PostMapping("/addProject={project_id}")
-        public void addProject(){
+    @PatchMapping("/personnel={id}/removeProject={project_id}")
+        public void addProject(@PathVariable int id, @PathVariable int project_id){
+            personnelService.addToProject(id, project_id);
+            
             //TODO
         }
 
     @DeleteMapping("/personnel={id}/removeProject={project_id}")
         public void removeProject(@PathVariable int id, @PathVariable int project_id){
+
             //TODO
         }
 
