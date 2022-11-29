@@ -50,7 +50,7 @@ public class PersonnelController {
             //TODO
         }
     
-        
+
     @PostMapping("/addProject={project_id}")
         public void addProject(){
             //TODO
@@ -61,7 +61,7 @@ public class PersonnelController {
             //TODO
         }
 
-    
+
 
 }
 
