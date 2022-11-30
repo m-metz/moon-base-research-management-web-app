@@ -28,13 +28,12 @@ public class PersonnelController {
 
     @GetMapping("/name={name}")
     public Personnel getPersonnel(@PathVariable String name){
-        //TODO
-        return null;
+        return personnelService.getPersonbyname(name);
         }
 
     @PostMapping("/add")
         public Personnel addPersonnel(@RequestBody Personnel personnel){
-            //TODO
+
             return null;
         }
     

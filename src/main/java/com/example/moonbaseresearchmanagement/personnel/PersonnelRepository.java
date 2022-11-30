@@ -11,5 +11,7 @@ public interface PersonnelRepository extends JpaRepository<Personnel, Integer> {
     Optional<Personnel> findByPersonnelId(int personnel_id);
 
     List<Personnel> findByOrderByNameAsc();
+
+    Optional<Personnel> findByName(String name);
     
 }
