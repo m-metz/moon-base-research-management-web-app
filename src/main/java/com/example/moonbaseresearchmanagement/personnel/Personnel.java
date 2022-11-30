@@ -90,12 +90,12 @@ public class Personnel {
         this.listProjects = listProjects;
     }
 
-    public boolean compareCountry(String newCountry){
-        if (country.equals(newCountry) == true){
+    public boolean compareCountry(String country2) {
+        if (country.equals(country2) == true){
             return true;
         }
-        else{
-            return false;
-        }
+
+        return false;
+
     }
 }

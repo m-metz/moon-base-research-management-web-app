@@ -23,7 +23,7 @@ public class ProjectService {
     }
 
     public Project getProject(int project_id) {
-        Optional<Project> searchProject = projectRepository.findByProjectId(project_id)
+        Optional<Project> searchProject = projectRepository.findByProjectId(project_id);
         if (searchProject.isPresent()){
             return projectRepository.findByProjectId(project_id).get();
         }

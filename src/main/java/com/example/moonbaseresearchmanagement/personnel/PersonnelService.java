@@ -32,7 +32,7 @@ public class PersonnelService {
     }
     
     public void addToProject(int id, int project_id) {
-
+        
        Project project = projectService.getProject(project_id);
        Personnel personnel = personnelRepository.findByPersonnelId(id).get();
 
