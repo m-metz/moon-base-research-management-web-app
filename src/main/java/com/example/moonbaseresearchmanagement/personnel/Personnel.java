@@ -89,4 +89,13 @@ public class Personnel {
     public void setListProjects(List<Project> listProjects) {
         this.listProjects = listProjects;
     }
+
+    public boolean compareCountry(String newCountry){
+        if (country.equals(newCountry) == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
