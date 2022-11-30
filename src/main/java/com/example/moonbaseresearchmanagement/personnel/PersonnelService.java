@@ -23,6 +23,10 @@ public class PersonnelService {
         return personnelRepository.findAll();
     }
 
+    public List<Personnel> getPersonnelSorted() {
+        return personnelRepository.findByOrderByNameAsc();
+    }
+    
     public void addToProject(int id, int project_id) {
 
        Project project = projectService.getProject(project_id);
@@ -33,5 +37,7 @@ public class PersonnelService {
        personnelRepository.save(personnel);
 
     }
+
+   
     
 }

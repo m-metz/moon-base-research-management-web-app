@@ -3,7 +3,7 @@ package com.example.moonbaseresearchmanagement.personnel;
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import jakarta.websocket.server.PathParam;
+
 
 @RestController
 @RequestMapping(path = "api/v1/personnel" )
@@ -23,8 +23,7 @@ public class PersonnelController {
 
     @GetMapping("/sorted")
     public List<Personnel> getPersonnelSorted(){
-        //TODO
-        return null;
+        return personnelService.getPersonnelSorted();
         }
 
     @GetMapping("/name={name}")
