@@ -194,7 +194,10 @@ CREATE TABLE PROJECT (
 INSERT INTO PROJECT (name,m_manager_id, e_manager_id, building_id)
 VALUES
 ('Plants in low gravity', 1, 4, 2),
-('Moon Rock Scouting', 1, 4, 4);
+('Moon Rock Scouting', 1, 4, 4),
+('Biotech Research', 1, 4, 4),
+('Bio Lab Updates', 1, 4, 4),
+('Rocket Fuel Research', 1, 4, 4);
 
 
 DROP TABLE IF EXISTS WORKS_ON;
