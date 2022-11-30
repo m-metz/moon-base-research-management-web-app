@@ -14,34 +14,33 @@ public class PersonnelController {
     @Autowired
     public PersonnelController(PersonnelService personnelService) {
         this.personnelService = personnelService;
-        }
+    }
 
     @GetMapping
     public List<Personnel> getAllPersonnel() {
         return personnelService.getAllPersonnel();
-        }
+    }
 
     @GetMapping("/sorted")
     public List<Personnel> getPersonnelSorted(){
         return personnelService.getPersonnelSorted();
-        }
+    }
 
     @GetMapping("/name={name}")
     public Personnel getPersonnel(@PathVariable String name){
         return personnelService.getPersonbyname(name);
-        }
+    }
 
     @PostMapping("/add")
-        public Personnel addPersonnel(@RequestBody Personnel personnel){
-
-            return null;
-        }
+    public Personnel addPersonnel(@RequestBody Personnel personnel){
+        return personnelService.addNewPersonnel(personnel);
+    }
     
     @PatchMapping("/update={id}")
-        public Personnel updatePersonnel(@PathVariable int id, @RequestParam(required = false) String name, @RequestParam(required = false) String country){
+    public Personnel updatePersonnel(@PathVariable int id, @RequestParam(required = false) String name, @RequestParam(required = false) String country){
             //TODO
-            return null;
-        }
+        return null;
+    }
 
     @DeleteMapping("delete={id}")
         public void deletePersonnel(@PathVariable int id){
@@ -49,11 +48,10 @@ public class PersonnelController {
         }
     
 
-    @PatchMapping("/personnel={id}/removeProject={project_id}")
+    @PatchMapping("/personnel={id}/registerProject={project_id}")
         public void addProject(@PathVariable int id, @PathVariable int project_id){
             personnelService.addToProject(id, project_id);
-            
-            //TODO
+        
         }
 
     @DeleteMapping("/personnel={id}/removeProject={project_id}")
