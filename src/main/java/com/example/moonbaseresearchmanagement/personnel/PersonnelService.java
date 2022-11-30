@@ -31,15 +31,29 @@ public class PersonnelService {
         return personnelRepository.findByOrderByNameAsc();
     }
     
-    public void addToProject(int id, int project_id) {
-        
+    public void addToProject(int id, int project_id) { 
        Project project = projectService.getProject(project_id);
-       Personnel personnel = personnelRepository.findByPersonnelId(id).get();
-
-       personnel.getListProjects().add(project);
-        
-       personnelRepository.save(personnel);
-
+       Optional<Personnel> searchPersonnel = personnelRepository.findByPersonnelId(id);
+       if (searchPersonnel.isPresent()){
+            Personnel personnel = searchPersonnel.get();
+            //Checking for new project
+            if(personnel.checkProject(project) == true){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel already registered in this project id!");
+            }
+            else{
+                //Checking for max number of projects
+                if (personnel.numProjects() < 4){
+                    personnel.addProject(project);
+                    personnelRepository.save(personnel);
+                }   
+                else{
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel already registered in 4 projects!");
+                }
+            }  
+        }
+        else{
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel not found!");
+       }  
     }
 
     public Personnel getPersonbyname(String name) {
