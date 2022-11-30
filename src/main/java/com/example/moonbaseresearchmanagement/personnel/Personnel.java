@@ -98,4 +98,29 @@ public class Personnel {
         return false;
 
     }
+
+    public void addProject(Project project) {
+        listProjects.add(project);
+    }
+
+    public void removeProject(Project project) {
+        listProjects.remove(project);
+    }
+
+    public int numProjects() {
+
+        return listProjects.size();
+    }
+
+    //Method to check if already registered in specifc project
+    public boolean checkProject(Project project) {
+        Project regProject = null;
+        for(int i = 0; i < listProjects.size(); i ++){
+            regProject = listProjects.get(i);
+            if(regProject.getProjectId() == project.getProjectId()){
+                return true;
+            }
+        }
+        return false;
+    }
 }

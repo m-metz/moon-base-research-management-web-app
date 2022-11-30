@@ -28,7 +28,7 @@ public class ProjectService {
             return projectRepository.findByProjectId(project_id).get();
         }
         else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel already registered in the database");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project not found!");
         }
     }
     
