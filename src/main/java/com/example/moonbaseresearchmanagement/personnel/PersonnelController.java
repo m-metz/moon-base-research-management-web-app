@@ -43,21 +43,21 @@ public class PersonnelController {
     }
 
     @DeleteMapping("delete={id}")
-        public void deletePersonnel(@PathVariable int id){
+    public void deletePersonnel(@PathVariable int id){
             //TODO
-        }
+    }
     
 
     @PatchMapping("/personnel={id}/registerProject={project_id}")
-        public void addProject(@PathVariable int id, @PathVariable int project_id){
+    public void addProject(@PathVariable int id, @PathVariable int project_id){
             personnelService.addToProject(id, project_id);
-        }
+    }
 
     @DeleteMapping("/personnel={id}/removeProject={project_id}")
-        public void removeProject(@PathVariable int id, @PathVariable int project_id){
+    public void removeProject(@PathVariable int id, @PathVariable int project_id){
 
             //TODO
-        }
+    }
 
 
 
