@@ -1,9 +1,12 @@
 package com.example.moonbaseresearchmanagement.project;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ProjectService {
@@ -20,7 +23,13 @@ public class ProjectService {
     }
 
     public Project getProject(int project_id) {
-        return projectRepository.findByProjectId(project_id).get();
+        Optional<Project> searchProject = projectRepository.findByProjectId(project_id)
+        if (searchProject.isPresent()){
+            return projectRepository.findByProjectId(project_id).get();
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel already registered in the database");
+        }
     }
     
 }
