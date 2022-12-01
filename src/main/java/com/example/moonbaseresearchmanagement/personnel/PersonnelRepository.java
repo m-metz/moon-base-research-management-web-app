@@ -13,5 +13,7 @@ public interface PersonnelRepository extends JpaRepository<Personnel, Integer> {
     List<Personnel> findByOrderByNameAsc();
 
     Optional<Personnel> findByName(String name);
+
+    Optional<Personnel> findByNameAndCountry(String name, String country);
     
 }

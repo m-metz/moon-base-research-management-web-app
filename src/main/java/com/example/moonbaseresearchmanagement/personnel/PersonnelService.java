@@ -138,15 +138,10 @@ public class PersonnelService {
 
     public Personnel addNewPersonnel(Personnel personnel) {
         //Check if same Personnel already Registered (Name and Country Must Match)
-        Optional<Personnel> searchPersonnel = personnelRepository.findByName(personnel.getName());
+        Optional<Personnel> searchPersonnel = personnelRepository.findByNameAndCountry(personnel.getName(), personnel.getCountry());
         if (searchPersonnel.isPresent()){
-            Personnel foundPersonnel = searchPersonnel.get();
-            if (personnel.compareCountry(foundPersonnel.getCountry()) == true){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel already registered in the database");
-            }
-            else{
-                personnel = personnelRepository.save(personnel);
-            }
+
         }
         else{
             personnel = personnelRepository.save(personnel);

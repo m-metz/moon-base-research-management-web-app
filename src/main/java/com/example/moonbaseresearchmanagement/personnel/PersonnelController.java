@@ -50,7 +50,6 @@ public class PersonnelController {
     @DeleteMapping("/delete={id}")
     public void deletePersonnel(@PathVariable int id){
         personnelService.deletePersonnel(id);
-            //TODO
     }
     
 
