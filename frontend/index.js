@@ -1,26 +1,24 @@
-function returnTicket(){
-    var ticketId = document.getElementById("ticketId").value;
+function login(){
+    var userid= document.getElementById("userId").value;
 
-    var url = "http://localhost:8080/api/v1/cancel/ticket=";
-
-    url = url + ticketId;
+    var url = `http://localhost:8080/api/v1/personnel/title/personnel=${userid}`;
     
     var header = {
-        method: "PATCH",
+        method: "GET",
         headers : {
             "content-type": "application/json"
         }
     };
 
-    fetch(url, header).then(res => checkResponse(res));
+    fetch(url, header).then(res => checkTitle(res));
 
-    function checkResponse(res){
+    function checkTitle(res){
         if (res.status === 200){
-            res.json().then(credit => {
+            res.json().then(title=> {
                 
-                let text ="<b>Credit Number:</b> " + credit.creditId + "<br><b>Amount</b>: " + credit.amount + "<br><b>Expiry Date</b>: " + credit.expiryDate;
-                document.getElementById("creditText").innerHTML = text;
-                $("#ticketModal").modal("show");
+                sessionStorage.setItem('title', title);
+                let url1 = `http://localhost:8080/api/v1/personnel/id=${userid}`;
+                fetch(url1, header).then(res => loguser(res));
             })
                 
         }
@@ -32,6 +30,22 @@ function returnTicket(){
         }
     }
     
+    function loguser(res){
+        res.json().then(user =>{
+            if(res.status == 200){
+                sessionStorage.setItem('name', user.name);
+                sessionStorage.setItem('id', user.id);
+                if(sessionStorage.getItem('title') != "Moon Researcher"){
+                    window.location("manager.html");
+                }
+                else{
+                    window.location("researcher.html");
+                }
+            }
+        });
+        
+
+    }
 
 
 }

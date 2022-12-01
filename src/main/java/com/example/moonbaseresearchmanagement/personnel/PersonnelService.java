@@ -84,6 +84,14 @@ public class PersonnelService {
         return personnel;
     }
 
+    public Personnel getPersonnelById(int id) {
+        Optional<Personnel> searchPersonnel = personnelRepository.findById(id);
+        if(searchPersonnel.isPresent()){
+            return searchPersonnel.get();
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel not found!");
+    }
+
    
     
 }

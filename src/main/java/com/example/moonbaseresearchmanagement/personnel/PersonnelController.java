@@ -21,6 +21,12 @@ public class PersonnelController {
         return personnelService.getAllPersonnel();
     }
 
+    @GetMapping("/id={id}")
+    public Personnel getPersonnelById(@PathVariable int id) {
+        return personnelService.getPersonnelById(id);
+    }
+
+
     @GetMapping("/sorted")
     public List<Personnel> getPersonnelSorted(){
         return personnelService.getPersonnelSorted();
