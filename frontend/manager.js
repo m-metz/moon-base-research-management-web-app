@@ -4,10 +4,14 @@ function loaduser(){
     document.getElementById("name").innerHTML= "Name: " + sessionStorage.getItem('name');
 }
 
-function showPersonnel(){
+function showPersonnel(s){
 
-    var url = "http://localhost:8080/api/v1/personnel";
-
+    if (s === undefined){
+        var url = "http://localhost:8080/api/v1/personnel";
+    }
+    else{
+        var url = "http://localhost:8080/api/v1/personnel/sorted";
+    }
     
     fetch(url).then(res => res.json()).then(personnelList => fillTablePersonnel(personnelList));
 }
