@@ -98,8 +98,8 @@ VALUES
 
 DROP TABLE IF EXISTS TRAVELS_BY;
 CREATE TABLE TRAVELS_BY (
-	transport_id			integer,
-	personnel_id			integer,
+	transport_id			integer not null,
+	personnel_id			integer not null,
 
     primary key (transport_id,personnel_id),
 	foreign key (transport_id) references TRANSPORT(transport_id),
@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS BUILDING;
 CREATE TABLE BUILDING (
 	building_id						integer	not null auto_increment,
     name					varchar(30) not null,
-    base_id							integer,
+    base_id							integer not null,
 
     primary key (building_id),
     foreign key(base_id) references BASE(base_id)
@@ -149,7 +149,7 @@ DROP TABLE IF EXISTS RESEARCH_EQUIPMENT;
 CREATE TABLE RESEARCH_EQUIPMENT (
 	equip_id					integer	not null auto_increment,
     name					varchar(30) not null,
-    in_use						boolean,
+    in_use						boolean not null,
     base_id						integer	not null,
 
     primary key (equip_id),
@@ -164,7 +164,7 @@ VALUES
 
 DROP TABLE IF EXISTS EARTH_MANAGER;
 CREATE TABLE EARTH_MANAGER (
-	personnel_id					integer,
+	personnel_id					integer not null ,
     station_name					varchar(30) not null,
 
     primary key (personnel_id),
@@ -181,8 +181,8 @@ DROP TABLE IF EXISTS PROJECT;
 CREATE TABLE PROJECT (
 	project_id					integer	not null auto_increment,
     name						varchar(30) not null,
-    m_manager_id				integer,
-    e_manager_id				integer,
+    m_manager_id				integer not null,
+    e_manager_id				integer not null,
     building_id					integer	not null,
 
     primary key (project_id),
@@ -219,9 +219,9 @@ VALUES
 DROP TABLE IF EXISTS RESEARCH_TASK;
 CREATE TABLE RESEARCH_TASK(
 	task_id					integer	not null auto_increment,
-    title				    varchar(30),
-    notes 					varchar(100),
-    status		            boolean,
+    title				    varchar(30) not null,
+    notes 					varchar(100) not null,
+    status		            boolean not null,
     project_id				integer	not null,
 
     primary key (task_id),

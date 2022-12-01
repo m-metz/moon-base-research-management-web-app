@@ -8,6 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
+import com.example.moonbaseresearchmanagement.earthmanager.EarthManagerService;
+import com.example.moonbaseresearchmanagement.moonmanager.MoonManager;
+import com.example.moonbaseresearchmanagement.moonmanager.MoonManagerService;
+import com.example.moonbaseresearchmanagement.moonresearcher.MoonResearcher;
+import com.example.moonbaseresearchmanagement.moonresearcher.MoonResearcherService;
 import com.example.moonbaseresearchmanagement.project.*;
 
 @Service
@@ -15,12 +21,17 @@ public class PersonnelService {
 
     private final PersonnelRepository personnelRepository;
     private final ProjectService projectService;
+    private final MoonManagerService moonManagerService;
+    private final MoonResearcherService moonResearcherService;
+    private final EarthManagerService earthManagerService;
 
     @Autowired
-    public PersonnelService(PersonnelRepository personnelRepository, ProjectService projectService) {
+    public PersonnelService(PersonnelRepository personnelRepository, ProjectService projectService, MoonManagerService moonManagerService, MoonResearcherService moonResearcherService, EarthManagerService earthManagerService ) {
         this.personnelRepository = personnelRepository;
         this.projectService = projectService;
-
+        this.moonManagerService = moonManagerService;
+        this.moonResearcherService = moonResearcherService;
+        this.earthManagerService = earthManagerService; 
     }
 
     public List<Personnel> getAllPersonnel() {
@@ -82,6 +93,31 @@ public class PersonnelService {
             personnel = personnelRepository.save(personnel);
         }
         return personnel;
+    }
+
+    public String getTitle(int id) {
+        //Check if id is of moon researcher
+        Optional<MoonResearcher> searchResearcher = moonResearcherService.getMoonResearcherById(id);
+        if(searchResearcher.isPresent()){
+            Optional<MoonManager> searchMoonManager = moonManagerService.getMoonManagerById(id);
+            if (searchMoonManager.isPresent()){
+                return "Moon Manager";
+            }
+            else{
+                return "Moon Researcher";
+            }
+
+        }
+        else{
+            Optional<EarthManager> searchEarthManager = earthManagerService.getEarthManagerById(id);
+            if(searchEarthManager.isPresent()){
+                return "Earth Manager";
+            }
+            else{
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel id  not Foud");
+            }
+        }
+
     }
 
    
