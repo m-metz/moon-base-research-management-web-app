@@ -95,6 +95,14 @@ public class PersonnelService {
         return personnel;
     }
 
+
+    public Personnel getPersonnelById(int id) {
+        Optional<Personnel> searchPersonnel = personnelRepository.findById(id);
+        if(searchPersonnel.isPresent()){
+            return searchPersonnel.get();
+        }
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel not found!");
+
     public String getTitle(int id) {
         //Check if id is of moon researcher
         Optional<MoonResearcher> searchResearcher = moonResearcherService.getMoonResearcherById(id);
@@ -117,6 +125,7 @@ public class PersonnelService {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel id  not Foud");
             }
         }
+
 
     }
 
