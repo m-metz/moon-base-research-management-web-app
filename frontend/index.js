@@ -14,9 +14,8 @@ function login(){
 
     function checkTitle(res){
         if (res.status === 200){
-            res.json().then(title=> {
-                
-                sessionStorage.setItem('title', title);
+            res.json().then(person=> {
+                sessionStorage.setItem('title', person.title);
                 let url1 = `http://localhost:8080/api/v1/personnel/id=${userid}`;
                 fetch(url1, header).then(res => loguser(res));
             })
@@ -34,12 +33,12 @@ function login(){
         res.json().then(user =>{
             if(res.status == 200){
                 sessionStorage.setItem('name', user.name);
-                sessionStorage.setItem('id', user.id);
+                sessionStorage.setItem('id', user.personnelId);
                 if(sessionStorage.getItem('title') != "Moon Researcher"){
-                    window.location("manager.html");
+                    window.location="manager.html";
                 }
                 else{
-                    window.location("researcher.html");
+                    window.location="researcher.html";
                 }
             }
         });
