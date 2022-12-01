@@ -120,7 +120,7 @@ public class PersonnelService {
 
         } 
         else{
-            throw new IllegalStateException("Personnel with id "+id + " does not exist");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel with id "+id + " does not exist");
         }
         
 
@@ -191,8 +191,8 @@ public class PersonnelService {
     @Transactional
     public void updatePersonnel(int id, String name, String country) {
         Personnel personnel = personnelRepository.findById(id).orElseThrow(()->
-                                     new IllegalStateException("Personnel with Id: "+ id + " does not exist"));
-
+                                                                new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel with Id: "+ id + " does not exist"));
+                                     
         if (name!= null && name.length()>0 && !personnel.getName().equals(name)){
             personnel.setName(name);
         }
