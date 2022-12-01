@@ -23,6 +23,14 @@ public class EarthManagerService {
         return earthManagerRepository.findById(id);
     }
 
+    public void updateEarthManager(EarthManager earthManager) {
+        earthManagerRepository.save(earthManager);
+    }
+
+    public void delete(EarthManager earthManager) {
+        earthManagerRepository.delete(earthManager);
+    }
+
     
 
     

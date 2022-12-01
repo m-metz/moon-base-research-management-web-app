@@ -105,6 +105,36 @@ public class MoonManager extends MoonResearcher {
         this.managesProjects = managesProjects;
     }
 
+    public void addManagedProject(Project project) {
+        managesProjects.add(project);
+        project.setMoonManager(this);
+    }
+
+    public void removeManagedProject(Project project) {
+        managesProjects.remove(project);
+        project.setMoonManager(null);
+    }
+
+    public void removeAllManagedprojects(){
+        Project project =null;
+        int size = managesProjects.size();
+        for (int i =0; i < size; i++){
+            project = managesProjects.get(0);
+            managesProjects.remove(project);
+            project.setMoonManager(null);
+        }
+    }
+
+    public int numManagedProjects() {
+
+        return managesProjects.size();
+    }
+
+
+    public Project getManagedProject(int i) {
+        return managesProjects.get(i);
+    }
+
     
 
 

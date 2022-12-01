@@ -98,8 +98,8 @@ VALUES
 
 DROP TABLE IF EXISTS TRAVELS_BY;
 CREATE TABLE TRAVELS_BY (
-	transport_id			integer not null,
-	personnel_id			integer not null,
+	transport_id			integer ,
+	personnel_id			integer ,
 
     primary key (transport_id,personnel_id),
 	foreign key (transport_id) references TRANSPORT(transport_id),
@@ -202,8 +202,8 @@ VALUES
 
 DROP TABLE IF EXISTS WORKS_ON;
 CREATE TABLE WORKS_ON (
-	personnel_id					integer not null,
-    project_id						integer	not null,
+	personnel_id					integer ,
+    project_id						integer	,
 
     primary key (personnel_id, project_id),
     foreign key(personnel_id) references PERSONNEL(personnel_id),
@@ -217,13 +217,16 @@ VALUES
 ('3','1'),
 ('1','2'),
 ('2','2'),
-('3','2');
+('3','2'),
+('1','3'),
+('1','4'),
+('1','5');
 
 DROP TABLE IF EXISTS RESEARCH_TASK;
 CREATE TABLE RESEARCH_TASK(
 	task_id					integer	not null auto_increment,
     title				    varchar(30) not null,
-    notes 					varchar(100) not null,
+    notes 					varchar(100) null,
     status		            boolean not null,
     project_id				integer	not null,
 

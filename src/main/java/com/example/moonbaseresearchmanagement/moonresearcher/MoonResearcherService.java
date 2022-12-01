@@ -23,5 +23,9 @@ public class MoonResearcherService {
     public Optional<MoonResearcher> getMoonResearcherById(int id) {
         return moonResearcherRepository.findById(id);
     }
+
+    public void delete(MoonResearcher moonResearcher) {
+        moonResearcherRepository.delete(moonResearcher);
+    }
     
 }
