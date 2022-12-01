@@ -43,10 +43,21 @@
           <div class="card-body">
             <h5 class="card-title">Project</h5>
             <p class="card-text">View Project Information</p>
-            <a href="project.html" class="btn btn-primary">Project Functions</a>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Project Functions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" onclick="showProjects()">Show All</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <br>
+    <div id="placeHolder" class = "col-6 col-sm-5">
+
     </div>
 
 
