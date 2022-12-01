@@ -144,3 +144,56 @@ function showAddPersonnel(){
     });
     
     }
+
+    function showAssignProject(){
+
+        var add = `<h2 class="h2 text-center">Please enter details for enrolling into a new project </h2> 
+                        <div class="input-group mb-3 w-25 mx-auto">
+                        <span class="input-group-text" id="label1">Personnel Id: </span>
+                        <input type="text" class="form-control" id="pid" aria-describedby="apid">
+                         <span class="input-group-text" id="label2">Project Id: </span>
+                        <input type="text" class="form-control" id="pProjId" aria-describedby="apProjId">
+                        </div>
+                    <div class="text-center"><button type="button" class= "btn btn-primary" onclick="enrollUser()">Enroll User</button></div>`
+    
+                    document.getElementById("placeHolder").className = "mt-3";
+                    document.getElementById("placeHolder").innerHTML = add;          
+    }
+    
+        function enrollUser(){
+        var pname = document.getElementById("pname").value;
+        var country = document.getElementById("pcountry").value;
+    
+        var url = "http://localhost:8080/api/v1/personnel/add";
+    
+        var msgBody = {
+            name : pname,
+            country : country
+        };
+    
+        var header = {
+            method: "POST",
+            body : JSON.stringify(msgBody),
+            headers : {
+                "content-type": "application/json"
+            }
+        };
+    
+        fetch(url, header).then(res =>{
+    
+            if (res.status == 200){
+                res.json().then(person=> {
+                        let text ="<b>Personnel id:</b> " + person.personnelId + "<br><b>Name</b>: " + person.name + "<br><b>Country</b>: " + person.country;
+                        document.getElementById("modalLabel").innerHTML = "New Personnel Information";
+                        document.getElementById("modalText").innerHTML = text;
+                        $("#managerModal").modal("show");
+                    })
+            }
+            else{
+                res.json().then(error =>{
+                    alert(error.message);
+                });
+            }
+        });
+        
+        }
