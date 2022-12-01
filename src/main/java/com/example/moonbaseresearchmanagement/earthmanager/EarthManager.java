@@ -18,7 +18,7 @@ public class EarthManager extends Personnel {
     private GroundStation groundStation;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "earthManager")
+    @OneToMany(mappedBy = "earthManager", orphanRemoval = true)
     private List<Project> managesProjects = new ArrayList<>();
 
     public EarthManager(){
