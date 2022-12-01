@@ -65,6 +65,11 @@ public class PersonnelController {
             //TODO
     }
 
+    @GetMapping("/title/personnel={id}")
+    public String getTitle(@PathVariable int id){
+        return personnelService.getTitle(id);
+    }
+
 
 
 }
