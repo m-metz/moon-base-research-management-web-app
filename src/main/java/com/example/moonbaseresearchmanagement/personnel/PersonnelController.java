@@ -44,7 +44,8 @@ public class PersonnelController {
     
     @PatchMapping("/update={id}")
     public Personnel updatePersonnel(@PathVariable int id, @RequestParam(required = false) String name, @RequestParam(required = false) String country){
-            //TODO
+        personnelService.updatePersonnel(id, name, country);    
+        //TODO
         return null;
     }
 

@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+//import org.springframework.transaction.annotation.Transactional;
+import jakarta.transaction.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.moonbaseresearchmanagement.earthmanager.EarthManager;
@@ -126,6 +128,22 @@ public class PersonnelService {
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel id  not Foud");
             }
         }
+    }
+
+    @Transactional
+    public void updatePersonnel(int id, String name, String country) {
+        Personnel personnel = personnelRepository.findById(id).orElseThrow(()->
+                                     new IllegalStateException("Personnel with Id: "+ id + " does not exist"));
+
+        if (name!= null && name.length()>0 && !personnel.getName().equals(name)){
+            personnel.setName(name);
+        }
+
+        if (country!= null && country.length()>0 && !personnel.getCountry().equals(country)){
+            personnel.setCountry(country);
+        }
+
+
     }
     
 }
