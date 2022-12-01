@@ -102,6 +102,7 @@ public class PersonnelService {
             return searchPersonnel.get();
         }
         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel not found!");
+    }
 
     public String getTitle(int id) {
         //Check if id is of moon researcher
@@ -109,26 +110,22 @@ public class PersonnelService {
         if(searchResearcher.isPresent()){
             Optional<MoonManager> searchMoonManager = moonManagerService.getMoonManagerById(id);
             if (searchMoonManager.isPresent()){
-                return "Moon Manager";
+                return "{\"title\":\"Moon Manager\"}";
             }
             else{
-                return "Moon Researcher";
+                return "{\"title\":\"Moon Researcher\"}";
             }
 
         }
         else{
             Optional<EarthManager> searchEarthManager = earthManagerService.getEarthManagerById(id);
             if(searchEarthManager.isPresent()){
-                return "Earth Manager";
+                return "{\"title\":\"Earth Manager\"}";
             }
             else{
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel id  not Foud");
             }
         }
-
-
     }
-
-   
     
 }
