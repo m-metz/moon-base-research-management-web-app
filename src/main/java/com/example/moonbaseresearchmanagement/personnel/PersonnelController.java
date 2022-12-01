@@ -47,8 +47,9 @@ public class PersonnelController {
         personnelService.updatePersonnel(id, name, country);    
     }
 
-    @DeleteMapping("delete={id}")
+    @DeleteMapping("/delete={id}")
     public void deletePersonnel(@PathVariable int id){
+        personnelService.deletePersonnel(id);
             //TODO
     }
     
@@ -60,8 +61,7 @@ public class PersonnelController {
 
     @DeleteMapping("/personnel={id}/removeProject={project_id}")
     public void removeProject(@PathVariable int id, @PathVariable int project_id){
-
-            //TODO
+        personnelService.removeFromProject(id, project_id);
     }
 
     @GetMapping("/title/personnel={id}")

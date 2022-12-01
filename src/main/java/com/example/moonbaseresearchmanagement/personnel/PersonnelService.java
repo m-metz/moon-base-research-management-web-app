@@ -69,6 +69,53 @@ public class PersonnelService {
        }  
     }
 
+    public void removeFromProject(int id, int project_id) { 
+        Project project = projectService.getProject(project_id);
+        Optional<Personnel> searchPersonnel = personnelRepository.findByPersonnelId(id);
+        if (searchPersonnel.isPresent()){
+             Personnel personnel = searchPersonnel.get();
+             //Checking project is not already enrolled
+             if(personnel.checkProject(project) == false){
+                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel is not registered to this project id!");
+             }
+             else{
+                 
+                personnel.removeProject(project);
+                personnelRepository.save(personnel);
+             }  
+         }
+         else{
+         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel not found!");
+        }  
+     }
+
+     public void deletePersonnel(int id) {
+        Optional<Personnel> searchPersonnel = personnelRepository.findByPersonnelId(id);
+        if(searchPersonnel.isPresent()){
+
+            Personnel personnel = searchPersonnel.get();
+            //Me trying to fix foreign key error
+            // List<Project> allProjects = projectService.getAllProjects();
+
+            // for(int i = 0; i < allProjects.size();i++){
+
+            //     if(personnel.checkProject(allProjects.get(i))==true){
+            //         personnel.removeProject(allProjects.get(i));
+                    
+            //     }
+
+            // }
+            // personnelRepository.save(personnel);
+            System.out.println("Deleting");
+            personnelRepository.delete(personnel);
+        }
+        else{
+            throw new IllegalStateException("Personnel with id "+id + " does not exist");
+        }
+        
+
+    }
+
     public Personnel getPersonbyname(String name) {
         Optional<Personnel> searchPersonnel = personnelRepository.findByName(name);
         if (searchPersonnel.isPresent()){
@@ -145,5 +192,7 @@ public class PersonnelService {
 
 
     }
+
+
     
 }
