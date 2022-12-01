@@ -181,8 +181,8 @@ DROP TABLE IF EXISTS PROJECT;
 CREATE TABLE PROJECT (
 	project_id					integer	not null auto_increment,
     name						varchar(30) not null,
-    m_manager_id				integer not null,
-    e_manager_id				integer not null,
+    m_manager_id				integer ,
+    e_manager_id				integer ,
     building_id					integer	not null,
 
     primary key (project_id),

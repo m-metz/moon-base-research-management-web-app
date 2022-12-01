@@ -16,7 +16,7 @@ import jakarta.persistence.*;
 public class MoonManager extends MoonResearcher {
     
     @JsonIgnore
-    @OneToMany(mappedBy = "moonManager")
+    @OneToMany(mappedBy = "moonManager", orphanRemoval = true)
     private List<Project> managesProjects = new ArrayList<>();
 
     public MoonManager(){
