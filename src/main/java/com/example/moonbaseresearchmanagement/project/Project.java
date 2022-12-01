@@ -26,11 +26,11 @@ public class Project {
     @ManyToMany(mappedBy = "listProjects")
     private List<Personnel> projectWorkers;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.REMOVE)
     @JoinColumn(name = "m_manager_id")
     private MoonManager moonManager;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.REMOVE)
     @JoinColumn(name = "e_manager_id")
     private EarthManager earthManager;
 

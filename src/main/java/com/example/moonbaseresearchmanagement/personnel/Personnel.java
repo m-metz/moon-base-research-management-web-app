@@ -101,15 +101,22 @@ public class Personnel {
 
     public void addProject(Project project) {
         listProjects.add(project);
+        project.getProjectWorkers().add(this);
     }
 
     public void removeProject(Project project) {
         listProjects.remove(project);
+        project.getProjectWorkers().remove(this);
     }
 
     public int numProjects() {
 
         return listProjects.size();
+    }
+
+    public void removeAllprojects(){
+        listProjects.removeAll(listProjects);
+        
     }
 
     //Method to check if already registered in specifc project
@@ -122,5 +129,9 @@ public class Personnel {
             }
         }
         return false;
+    }
+
+    public Project getProject(int i) {
+        return listProjects.get(i);
     }
 }

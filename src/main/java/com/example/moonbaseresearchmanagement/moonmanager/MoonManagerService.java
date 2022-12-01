@@ -23,5 +23,13 @@ public class MoonManagerService {
     public Optional<MoonManager> getMoonManagerById(int id) {
         return moonManagerRepository.findById(id);
     }
+
+    public void updateMoonManager(MoonManager moonManager) {
+        moonManagerRepository.save(moonManager);
+    }
+
+    public void delete(MoonManager moonManager) {
+        moonManagerRepository.delete(moonManager);
+    }
     
 }

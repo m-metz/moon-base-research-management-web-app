@@ -92,23 +92,33 @@ public class PersonnelService {
      public void deletePersonnel(int id) {
         Optional<Personnel> searchPersonnel = personnelRepository.findByPersonnelId(id);
         if(searchPersonnel.isPresent()){
-
             Personnel personnel = searchPersonnel.get();
-            //Me trying to fix foreign key error
-            // List<Project> allProjects = projectService.getAllProjects();
+            //check wich type of professinal it is
+            Optional<MoonResearcher> searchMoonResearcher = moonResearcherService.getMoonResearcherById(id);
+           if (searchMoonResearcher.isPresent()){
+                Optional<MoonManager> searchMoonManager = moonManagerService.getMoonManagerById(id);
+                if(searchMoonManager.isPresent()){
+                    MoonManager moonManager = searchMoonManager.get();
+                    moonManager.removeAllManagedprojects();
+                    moonManagerService.updateMoonManager(moonManager);           
+                }
+           }
+           else{
+                Optional<EarthManager> searchEarthManager = earthManagerService.getEarthManagerById(id);
+                if(searchEarthManager.isPresent()){
+                    EarthManager earthManager = searchEarthManager.get();
+                    earthManager.removeAllManagedprojects();
+                    earthManagerService.updateEarthManager(earthManager); 
+                }
 
-            // for(int i = 0; i < allProjects.size();i++){
-
-            //     if(personnel.checkProject(allProjects.get(i))==true){
-            //         personnel.removeProject(allProjects.get(i));
-                    
-            //     }
-
-            // }
-            // personnelRepository.save(personnel);
+           }
+           //Clear Many-to-Many
+            personnel.removeAllprojects();
+            personnelRepository.save(personnel);
             System.out.println("Deleting");
             personnelRepository.delete(personnel);
-        }
+
+        } 
         else{
             throw new IllegalStateException("Personnel with id "+id + " does not exist");
         }
@@ -143,6 +153,7 @@ public class PersonnelService {
         }
         return personnel;
     }
+    
 
 
     public Personnel getPersonnelById(int id) {
