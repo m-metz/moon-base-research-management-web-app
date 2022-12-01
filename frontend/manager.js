@@ -107,7 +107,7 @@ function showAddPersonnel(){
                 document.getElementById("placeHolder").innerHTML = add;          
 }
 
-    function addUser(){
+function addUser(){
     var pname = document.getElementById("pname").value;
     var country = document.getElementById("pcountry").value;
 
@@ -143,4 +143,113 @@ function showAddPersonnel(){
         }
     });
     
+}
+
+function showDeletePersonnel(){
+    var del = `<h2 class="h2 text-center">Please enter id of Personnel you want to delete </h2> 
+                <div class="input-group mb-3 w-25 mx-auto">
+                <span class="input-group-text" id="label1">Id: </span>
+                <input type="text" class="form-control" id="pid" aria-describedby="apid">
+                </div>
+            <div class="text-center"><button type="button" class= "btn btn-primary" onclick="delUser()">Del User</button></div>`
+
+document.getElementById("placeHolder").className = "mt-3";
+document.getElementById("placeHolder").innerHTML = del;    
+
+}
+
+function delUser(){
+    var pid = document.getElementById("pid").value;
+
+    if (pid === sessionStorage.getItem('id')){
+        alert("Operation Canceled! You can't delete your own user.");
+        return;
     }
+
+    var url = `http://localhost:8080/api/v1/personnel/delete=${pid}`;
+
+
+    var header = {
+        method: "DELETE",
+        headers : {
+            "content-type": "application/json"
+        }
+    };
+
+    fetch(url, header).then(res =>{
+
+        if (res.status == 200){
+                    document.getElementById("modalLabel").innerHTML = "Delete Operation";
+                    document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " deleted.";
+                    $("#managerModal").modal("show");
+        }
+        else{
+            res.json().then(error =>{
+                alert(error.message);
+            });
+        }
+    });
+
+}
+
+function showUpdatePersonnel(){
+        var update = `<h2 class="h2 text-center">Please enters the fields you want to update:  </h2> 
+                        <div class="input-group mb-3 w-25 mx-auto">
+                        <span class="input-group-text" id="label0">Id: </span>
+                        <input type="text" class="form-control" id="pid" aria-describedby="apid">
+                        <span class="input-group-text" id="label1">Name: </span>
+                        <input type="text" class="form-control" id="pname" aria-describedby="apname">
+                         <span class="input-group-text" id="label2">Country: </span>
+                        <input type="text" class="form-control" id="pcountry" aria-describedby="apcountry">
+                        </div>
+                    <div class="text-center"><button type="button" class= "btn btn-primary" onclick="updateUser()">Update User</button></div>`
+    
+                    document.getElementById("placeHolder").className = "mt-3";
+                    document.getElementById("placeHolder").innerHTML = update;          
+}
+
+function updateUser(){
+    var pid =document.getElementById("pid").value;
+    if (pid === ""){
+        alert("Please inform Personnel id")
+    }
+    var pname = document.getElementById("pname").value;
+    var country = document.getElementById("pcountry").value;
+
+    if (pname === "" && country != ""){
+        var url = `http://localhost:8080/api/v1/personnel/update=${pid}?country=${country}`;
+    }
+    else if (country === "" && pname != ""){
+        var url = `http://localhost:8080/api/v1/personnel/update=${pid}?name=${pname}`;
+    }
+    else if (pname != "" && country != ""){
+        var url = `http://localhost:8080/api/v1/personnel/update=${pid}?name=${pname}&country=${country}`;
+    }
+    else{
+        alert("Please inform the field(s) you want to update");
+    }
+
+    var header = {
+        method: "PATCH",
+        headers : {
+            "content-type": "application/json"
+        }
+    };
+
+    fetch(url, header).then(res =>{
+
+        if (res.status == 200){
+                    document.getElementById("modalLabel").innerHTML = "Update Operation";
+                    document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " updated.";
+                    $("#managerModal").modal("show");
+        }
+        else{
+            res.json().then(error =>{
+                alert(error.message);
+            });
+        }
+    });
+
+
+}
+
