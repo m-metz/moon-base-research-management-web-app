@@ -4,6 +4,11 @@ function loaduser(){
     document.getElementById("name").innerHTML= "Name: " + sessionStorage.getItem('name');
 }
 
+function logout(){
+    window.location="index.html";
+    sessionStorage.clear();
+}
+
 function showPersonnel(s){
 
     if (s === undefined){
