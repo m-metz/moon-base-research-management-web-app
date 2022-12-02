@@ -319,24 +319,31 @@ function showPersonnelProjects(){
 }
 
 function personnelProject(){
-    var pid = var pname = document.getElementById("pname").value;
-    var url = "http://localhost:8080/api/v1/project";
+    var pid = document.getElementById("pid").value;
+    if (pid === ""){
+        alert("Please insert Personnel id")
+    }
+    var url = `http://localhost:8080/api/v1/personnel/project/personnel=${pid}`;
 
     
-    fetch(url).then(res => res.json()).then(projectList => fillTableProject(projectList));
+    fetch(url).then(res => {
+        if (res.status === 200){
+            res.json().then(projectList => fillTableProject(projectList));
+        }
+        else{
+            res.json().then(error =>{
+                alert(error.message);
+            });
+        }
+    });
+        
 }
-
 
 function fillTableProject(projectList){
     var strTable= `<table class="table table-striped">
                         <thead>
                             <th> Project_Id</th>
                             <th> Name </th>
-                            <th> Moon Manager Id</th>
-                            <th> Moon Manager Name</th>
-                            <th> Earth Manager Id</th>
-                            <th> Earth Manager Name</th>
-                            <th> Building </th>
                         </thead>
                         
                         <tbody>`;
@@ -347,11 +354,6 @@ function fillTableProject(projectList){
         strTable = strTable + `<tr>
                                     <td> ${project.projectId} </td>
                                     <td> ${project.name} </td>
-                                    <td> ${project.moonManager.personnelId} </td>
-                                    <td> ${project.moonManager.name} </td>
-                                    <td> ${project.earthManager.personnelId} </td>
-                                    <td> ${project.earthManager.name} </td>
-                                    <td> ${project.building.name} </td>
                                 </tr>`;
 
     }
@@ -359,9 +361,7 @@ function fillTableProject(projectList){
     strTable = strTable + `</tbody>
                             </table>`;
 
-    document.getElementById("placeHolder").className = "mt-3";
+    document.getElementById("placeHolder").className = "col-6 col-sm-5";
     document.getElementById("placeHolder").innerHTML = strTable;
-
-}
 
 }
