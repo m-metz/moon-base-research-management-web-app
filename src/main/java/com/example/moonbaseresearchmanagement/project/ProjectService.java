@@ -31,5 +31,15 @@ public class ProjectService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project not found!");
         }
     }
+
+    public Project getProjectByName(String name) {
+        Optional<Project> searchProject = projectRepository.findByName(name);
+        if (searchProject.isPresent()){
+            return searchProject.get();
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Project "+ name+ " not found");
+        }
+    }
     
 }
