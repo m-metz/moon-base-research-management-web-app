@@ -184,7 +184,7 @@ public class PersonnelService {
     }
 
     @Transactional
-    public void updatePersonnel(int id, String name, String country) {
+    public Personnel updatePersonnel(int id, String name, String country) {
         Personnel personnel = personnelRepository.findById(id).orElseThrow(()->
                                                                 new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel with Id: "+ id + " does not exist"));
                                      
@@ -195,7 +195,7 @@ public class PersonnelService {
         if (country!= null && country.length()>0 && !personnel.getCountry().equals(country)){
             personnel.setCountry(country);
         }
-
+        return personnel;
 
     }
 

@@ -209,7 +209,7 @@ function showUpdatePersonnel(){
 }
 
 function updateUser(){
-    var pid =document.getElementById("pid").value;
+    const pid =document.getElementById("pid").value;
     if (pid === ""){
         alert("Please inform Personnel id")
     }
@@ -239,9 +239,17 @@ function updateUser(){
     fetch(url, header).then(res =>{
 
         if (res.status == 200){
-                    document.getElementById("modalLabel").innerHTML = "Update Operation";
-                    document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " updated.";
-                    $("#managerModal").modal("show");
+            res.json().then(user =>{
+                document.getElementById("modalLabel").innerHTML = "Update Operation";
+                document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " updated.";
+                $("#managerModal").modal("show");
+                if (pid === sessionStorage.getItem("id")){
+                    sessionStorage.setItem('name', user.name);
+                    document.getElementById("name").innerHTML= "Name: " + sessionStorage.getItem('name');
+
+                }
+            });
+                    
         }
         else{
             res.json().then(error =>{
