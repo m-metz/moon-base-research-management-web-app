@@ -43,8 +43,8 @@ public class PersonnelController {
     }
     
     @PatchMapping("/update={id}")
-    public void updatePersonnel(@PathVariable int id, @RequestParam(required = false) String name, @RequestParam(required = false) String country){
-        personnelService.updatePersonnel(id, name, country);    
+    public Personnel updatePersonnel(@PathVariable int id, @RequestParam(required = false) String name, @RequestParam(required = false) String country){
+        return personnelService.updatePersonnel(id, name, country);    
     }
 
     @DeleteMapping("/delete={id}")
