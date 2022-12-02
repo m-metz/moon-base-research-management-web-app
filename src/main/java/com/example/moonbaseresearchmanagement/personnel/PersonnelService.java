@@ -199,6 +199,23 @@ public class PersonnelService {
 
     }
 
+    public List<Project> getProjects(int id) {
+        Optional<Personnel> searchPersonnel = personnelRepository.findById(id);
+        if (searchPersonnel.isPresent()){
+            Personnel personnel = searchPersonnel.get();
+            List<Project> projectList = personnel.getListProjects();
+            if(projectList.isEmpty()){
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No projects assigned to Personnel id: " + id + "!"); 
+            }
+            return projectList;
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personnel not found"); 
+
+        }
+        
+    }
+
 
     
 }

@@ -2,6 +2,9 @@ package com.example.moonbaseresearchmanagement.personnel;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.moonbaseresearchmanagement.project.Project;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -66,6 +69,11 @@ public class PersonnelController {
     @GetMapping("/title/personnel={id}")
     public String getTitle(@PathVariable int id){
         return personnelService.getTitle(id);
+    }
+    
+    @GetMapping("/project/personnel={id}")
+    public List<Project> getProjects(@PathVariable int id){
+        return personnelService.getProjects(id);
     }
 
 
