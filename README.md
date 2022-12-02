@@ -1,10 +1,17 @@
 # Project-Group-13
 
-This is our group's Web App for our Moon Base Research Management System.
+This is our group's web app for our Moon Base Project Management System.
 
 # Getting Started
-1. Install MySQL Server 8.
-1. [./database/Moon_Base_Database.sql]()
+1. [Install MySQL Workbench 8](https://dev.mysql.com/downloads/workbench/)
+1. In MySQL Workbench 8, run our web app's database script. It contains the database structure and demo data [database/Moon_Base_Database.sql](database/Moon_Base_Database.sql)
+    * It will create a DB user called `javauser` with a known password, and that user will just have access to our app database.
+1. Adjust `spring.datasource.url` in [src/main/resources/application.properties](src/main/resources/application.properties) if needed. For example, your DB server may be on a different host or port.
+1. Run [src/main/java/com/example/moonbaseresearchmanagement/MoonBaseResearchManagementApplication.java](src/main/java/com/example/moonbaseresearchmanagement/MoonBaseResearchManagementApplication.java)
+1. Open the Webapp Frontend [frontend/index.html](frontend/index.html) <a href="frontend/index.html" target="_blank">example</a>
+1. (Optional) Import [MoonBase_Postman.postman_collection](MoonBase_Postman.postman_collection) into Postman if you want to test the web API directly
+
+Congratulations! 🎉 You are now running our Moon Base Project Management System!
 
 # Demo Functionality
 
