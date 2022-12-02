@@ -115,7 +115,6 @@ public class PersonnelService {
            //Clear Many-to-Many
             personnel.removeAllprojects();
             personnelRepository.save(personnel);
-            System.out.println("Deleting");
             personnelRepository.delete(personnel);
 
         } 
@@ -132,7 +131,7 @@ public class PersonnelService {
             return searchPersonnel.get();
         }
         else{
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel "+ name+ " not Foud");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Personel "+ name+ " not found");
         }
     }
 

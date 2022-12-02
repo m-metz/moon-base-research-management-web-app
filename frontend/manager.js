@@ -305,4 +305,63 @@ function updateUser(){
             }
         });
         
-        }
+    }
+function showPersonnelProjects(){
+    var project =   `<h2 class="h2 text-center">Please enters Personnel id to see current projects:  </h2> 
+                        <div class="input-group mb-3 w-25 mx-auto">
+                        <span class="input-group-text" id="label0">Id: </span>
+                        <input type="text" class="form-control" id="pid" aria-describedby="apid">
+                        </div>
+                    <div class="text-center"><button type="button" class= "btn btn-primary" onclick="personnelProject()">Show Projects</button></div>`
+
+    document.getElementById("placeHolder").className = "mt-3";
+    document.getElementById("placeHolder").innerHTML = project;          
+}
+
+function personnelProject(){
+    var pid = var pname = document.getElementById("pname").value;
+    var url = "http://localhost:8080/api/v1/project";
+
+    
+    fetch(url).then(res => res.json()).then(projectList => fillTableProject(projectList));
+}
+
+
+function fillTableProject(projectList){
+    var strTable= `<table class="table table-striped">
+                        <thead>
+                            <th> Project_Id</th>
+                            <th> Name </th>
+                            <th> Moon Manager Id</th>
+                            <th> Moon Manager Name</th>
+                            <th> Earth Manager Id</th>
+                            <th> Earth Manager Name</th>
+                            <th> Building </th>
+                        </thead>
+                        
+                        <tbody>`;
+
+    for (i=0; i<projectList.length; i++){
+        let project = projectList[i];
+        
+        strTable = strTable + `<tr>
+                                    <td> ${project.projectId} </td>
+                                    <td> ${project.name} </td>
+                                    <td> ${project.moonManager.personnelId} </td>
+                                    <td> ${project.moonManager.name} </td>
+                                    <td> ${project.earthManager.personnelId} </td>
+                                    <td> ${project.earthManager.name} </td>
+                                    <td> ${project.building.name} </td>
+                                </tr>`;
+
+    }
+
+    strTable = strTable + `</tbody>
+                            </table>`;
+
+    document.getElementById("placeHolder").className = "mt-3";
+    document.getElementById("placeHolder").innerHTML = strTable;
+
+}
+
+}
