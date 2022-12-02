@@ -279,33 +279,24 @@ function updateUser(){
     }
     
         function enrollUser(){
-        var pname = document.getElementById("pname").value;
-        var country = document.getElementById("pcountry").value;
+        var pid = document.getElementById("pid").value;
+        var project = document.getElementById("pProjId").value;
     
-        var url = "http://localhost:8080/api/v1/personnel/add";
-    
-        var msgBody = {
-            name : pname,
-            country : country
-        };
+        var url = `http://localhost:8080/api/v1/personnel/personnel=${pid}/registerProject=${project}`;
     
         var header = {
-            method: "POST",
-            body : JSON.stringify(msgBody),
+            method: "PATCH",
             headers : {
                 "content-type": "application/json"
             }
         };
     
         fetch(url, header).then(res =>{
-    
+
             if (res.status == 200){
-                res.json().then(person=> {
-                        let text ="<b>Personnel id:</b> " + person.personnelId + "<br><b>Name</b>: " + person.name + "<br><b>Country</b>: " + person.country;
-                        document.getElementById("modalLabel").innerHTML = "New Personnel Information";
-                        document.getElementById("modalText").innerHTML = text;
+                        document.getElementById("modalLabel").innerHTML = "Assign Operation";
+                        document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " assigned to project with id: " + project + " .";
                         $("#managerModal").modal("show");
-                    })
             }
             else{
                 res.json().then(error =>{
