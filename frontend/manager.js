@@ -80,10 +80,10 @@ function fillTableProject(projectList){
         strTable = strTable + `<tr>
                                     <td> ${project.projectId} </td>
                                     <td> ${project.name} </td>
-                                    <td> ${project.moonManager.personnelId} </td>
-                                    <td> ${project.moonManager.name} </td>
-                                    <td> ${project.earthManager.personnelId} </td>
-                                    <td> ${project.earthManager.name} </td>
+                                    <td> ${project.moonManager?.personnelId} </td>
+                                    <td> ${project.moonManager?.name} </td>
+                                    <td> ${project.earthManager?.personnelId} </td>
+                                    <td> ${project.earthManager?.name} </td>
                                     <td> ${project.building.name} </td>
                                 </tr>`;
 
@@ -459,6 +459,7 @@ function searchProject(){
 }
 
 function fillTableOneProject(project){
+    
     var strTable= `<table class="table table-striped">
                         <thead>
                             <th> Project_Id</th>
@@ -475,10 +476,10 @@ function fillTableOneProject(project){
         strTable = strTable + `<tr>
                                     <td> ${project.projectId} </td>
                                     <td> ${project.name} </td>
-                                    <td> ${project.moonManager.personnelId} </td>
-                                    <td> ${project.moonManager.name} </td>
-                                    <td> ${project.earthManager.personnelId} </td>
-                                    <td> ${project.earthManager.name} </td>
+                                    <td> ${project.moonManager?.personnelId} </td>
+                                    <td> ${project.moonManager?.name} </td>
+                                    <td> ${project.earthManager?.personnelId} </td>
+                                    <td> ${project.earthManager?.name} </td>
                                     <td> ${project.building.name} </td>
                                 </tr>`;
 
