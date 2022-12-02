@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-//import org.springframework.transaction.annotation.Transactional;
 import jakarta.transaction.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -136,6 +135,10 @@ public class PersonnelService {
     }
 
     public Personnel addNewPersonnel(Personnel personnel) {
+        //Checking for empty fields:
+        if (personnel.getName() == "" || personnel.getCountry() == ""){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Please inform name and country to register new Personnel!");
+        }
         //Check if same Personnel already Registered (Name and Country Must Match)
         Optional<Personnel> searchPersonnel = personnelRepository.findByNameAndCountry(personnel.getName(), personnel.getCountry());
         if (searchPersonnel.isPresent()){
