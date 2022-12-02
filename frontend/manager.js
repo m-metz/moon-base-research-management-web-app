@@ -262,7 +262,6 @@ function updateUser(){
 }
 
 
-
     function showAssignProject(){
 
         var add = `<h2 class="h2 text-center">Please enter details for enrolling into a new project </h2> 
@@ -352,7 +351,7 @@ function updateUser(){
     }
 
 function showPersonnelProjects(){
-    var project =   `<h2 class="h2 text-center">Please enters Personnel id to see current projects:  </h2> 
+    var project =   `<h2 class="h2 text-center">Please enter Personnel id to see current projects:  </h2> 
                         <div class="input-group mb-3 w-25 mx-auto">
                         <span class="input-group-text" id="label0">Id: </span>
                         <input type="text" class="form-control" id="pid" aria-describedby="apid">
@@ -373,7 +372,7 @@ function personnelProject(){
     
     fetch(url).then(res => {
         if (res.status === 200){
-            res.json().then(projectList => fillTableProject(projectList));
+            res.json().then(projectList => fillTablePersonProject(projectList));
         }
         else{
             res.json().then(error =>{
@@ -384,7 +383,7 @@ function personnelProject(){
         
 }
 
-function fillTableProject(projectList){
+function fillTablePersonProject(projectList){
     var strTable= `<table class="table table-striped">
                         <thead>
                             <th> Project_Id</th>
@@ -407,6 +406,72 @@ function fillTableProject(projectList){
                             </table>`;
 
     document.getElementById("placeHolder").className = "col-6 col-sm-5";
+    document.getElementById("placeHolder").innerHTML = strTable;
+
+}
+function showProjectName(){
+    var project =   `<h2 class="h2 text-center">Please enter Project name:  </h2> 
+                        <div class="input-group mb-3 w-25 mx-auto">
+                        <span class="input-group-text" id="label0">Project Name: </span>
+                        <input type="text" class="form-control" id="pname" aria-describedby="aname">
+                        </div>
+                    <div class="text-center"><button type="button" class= "btn btn-primary" onclick="searchProject()">Search Project</button></div>`
+
+    document.getElementById("placeHolder").className = "mt-3";
+    document.getElementById("placeHolder").innerHTML = project;          
+}
+
+function searchProject(){
+    var pname = document.getElementById("pname").value;
+
+    if (pname === ""){
+        alert("Please informe a Project Name");
+        return;
+    }
+    
+    var url = `http://localhost:8080/api/v1/project/name=${pname}`;
+
+    
+    fetch(url).then(res => {
+        if (res.status === 200){
+            res.json().then(projec => fillTableOneProject(projec));
+        }
+        else{
+            res.json().then(error =>{
+                alert(error.message);
+            });
+        }
+    });
+}
+
+function fillTableOneProject(project){
+    var strTable= `<table class="table table-striped">
+                        <thead>
+                            <th> Project_Id</th>
+                            <th> Name </th>
+                            <th> Moon Manager Id</th>
+                            <th> Moon Manager Name</th>
+                            <th> Earth Manager Id</th>
+                            <th> Earth Manager Name</th>
+                            <th> Building </th>
+                        </thead>
+                        
+                        <tbody>`;
+        
+        strTable = strTable + `<tr>
+                                    <td> ${project.projectId} </td>
+                                    <td> ${project.name} </td>
+                                    <td> ${project.moonManager.personnelId} </td>
+                                    <td> ${project.moonManager.name} </td>
+                                    <td> ${project.earthManager.personnelId} </td>
+                                    <td> ${project.earthManager.name} </td>
+                                    <td> ${project.building.name} </td>
+                                </tr>`;
+
+    strTable = strTable + `</tbody>
+                            </table>`;
+
+    document.getElementById("placeHolder").className = "mt-3";
     document.getElementById("placeHolder").innerHTML = strTable;
 
 }
