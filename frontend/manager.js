@@ -204,7 +204,7 @@ function delUser(){
 
 function showUpdatePersonnel(){
         var update = `<h2 class="h2 text-center">Please enters the fields you want to update:  </h2> 
-                        <div class="input-group mb-3 w-25 mx-auto">
+                        <div class="input-group mb-3 w-50 mx-auto">
                         <span class="input-group-text" id="label0">Id: </span>
                         <input type="text" class="form-control" id="pid" aria-describedby="apid">
                         <span class="input-group-text" id="label1">Name: </span>
