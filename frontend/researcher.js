@@ -4,6 +4,11 @@ function loaduser(){
     document.getElementById("name").innerHTML= "Name: " + sessionStorage.getItem('name');
 }
 
+function logout(){
+    window.location="index.html";
+    sessionStorage.clear();
+}
+
 function showViewProjects(){
 
     var id = sessionStorage.getItem('id');
