@@ -3,17 +3,26 @@
 This is our group's web app for our Moon Base Project Management System.
 
 # Getting Started
-1. [Install MySQL Workbench 8](https://dev.mysql.com/downloads/workbench/)
+
+## Dependencies
+
+1. [Install MySQL Workbench 8](https://dev.mysql.com/downloads/workbench/).
+1. Download [Maven 3.8.6+](https://maven.apache.org/download.cgi) and make sure your IDE supports it. This is used to manage java dependencies and build the java part of our project.
+
+## Running the Web App
+
 1. In MySQL Workbench 8, run our web app's database script. It contains the database structure and demo data [database/Moon_Base_Database.sql](database/Moon_Base_Database.sql)
     * It will create a DB user called `javauser` with a known password, and that user will just have access to our app database.
 1. Adjust `spring.datasource.url` in [src/main/resources/application.properties](src/main/resources/application.properties) if needed. For example, your DB server may be on a different host or port.
 1. Run [src/main/java/com/example/moonbaseresearchmanagement/MoonBaseResearchManagementApplication.java](src/main/java/com/example/moonbaseresearchmanagement/MoonBaseResearchManagementApplication.java)
-1. Open the Webapp Frontend [frontend/index.html](frontend/index.html) <a href="frontend/index.html" target="_blank">example</a>
-1. (Optional) Import [MoonBase_Postman.postman_collection](MoonBase_Postman.postman_collection) into Postman if you want to test the web API directly
+1. Open the Webapp Frontend [frontend/index.html](frontend/index.html) in a web browser.
+1. (Optional) Import [MoonBase_Postman.postman_collection](MoonBase_Postman.postman_collection) into Postman if you want to test the web API directly.
 
 Congratulations! 🎉 You are now running our Moon Base Project Management System!
 
 # Demo Functionality
+
+For marking purposes, the following functionality can be tested in our web app:
 
 |SN|Description|Example|Front-end|Postman|
 |----:|----|----|----|:----|
@@ -25,3 +34,5 @@ Congratulations! 🎉 You are now running our Moon Base Project Management Syste
 |6|Deleting an entity record|Removing a person (non-existing records)|X|X|
 |7|Adding a relational record|Assign a person to a project|X|X|
 |8|Deleting a relational record|Removing a person from a project|X|X|
+
+We also have functionality for logging in as a Moon Manager and a Moon Researcher, viewing all projects, viewing a person's projects, or looking up projects by exact name.
