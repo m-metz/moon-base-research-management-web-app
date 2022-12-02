@@ -116,6 +116,11 @@ function addUser(){
     var pname = document.getElementById("pname").value;
     var country = document.getElementById("pcountry").value;
 
+    if (pname === "" || country === ""){
+        alert("Please insert Name and Contry to Perform Registration")
+        return;
+    }
+
     var url = "http://localhost:8080/api/v1/personnel/add";
 
     var msgBody = {
@@ -216,7 +221,8 @@ function showUpdatePersonnel(){
 function updateUser(){
     const pid =document.getElementById("pid").value;
     if (pid === ""){
-        alert("Please inform Personnel id")
+        alert("Please inform Personnel id");
+        return;
     }
     var pname = document.getElementById("pname").value;
     var country = document.getElementById("pcountry").value;
@@ -232,6 +238,7 @@ function updateUser(){
     }
     else{
         alert("Please inform the field(s) you want to update");
+        return;
     }
 
     var header = {
@@ -370,7 +377,9 @@ function showPersonnelProjects(){
 function personnelProject(){
     var pid = document.getElementById("pid").value;
     if (pid === ""){
-        alert("Please insert Personnel id")
+        alert("Please insert Personnel id");
+        return;
+
     }
     var url = `http://localhost:8080/api/v1/personnel/project/personnel=${pid}`;
 
@@ -430,7 +439,7 @@ function searchProject(){
     var pname = document.getElementById("pname").value;
 
     if (pname === ""){
-        alert("Please informe a Project Name");
+        alert("Please inform a Project Name!");
         return;
     }
     
