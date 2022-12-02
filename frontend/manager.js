@@ -306,6 +306,51 @@ function updateUser(){
         });
         
     }
+
+    function showRemoveProject(){
+
+        var add = `<h2 class="h2 text-center">Please enter details for enrolling into a new project </h2> 
+                        <div class="input-group mb-3 w-25 mx-auto">
+                        <span class="input-group-text" id="label1">Personnel Id: </span>
+                        <input type="text" class="form-control" id="pid" aria-describedby="apid">
+                         <span class="input-group-text" id="label2">Project Id: </span>
+                        <input type="text" class="form-control" id="pProjId" aria-describedby="apProjId">
+                        </div>
+                    <div class="text-center"><button type="button" class= "btn btn-primary" onclick="unenrollUser()">Unenroll User</button></div>`
+    
+                    document.getElementById("placeHolder").className = "mt-3";
+                    document.getElementById("placeHolder").innerHTML = add;          
+    }
+    
+    function unenrollUser(){
+        var pid = document.getElementById("pid").value;
+        var project = document.getElementById("pProjId").value;
+    
+        var url = `http://localhost:8080/api/v1/personnel/personnel=${pid}/removeProject=${project}`;
+    
+        var header = {
+            method: "DELETE",
+            headers : {
+                "content-type": "application/json"
+            }
+        };
+    
+        fetch(url, header).then(res =>{
+
+            if (res.status == 200){
+                        document.getElementById("modalLabel").innerHTML = "Assign Operation";
+                        document.getElementById("modalText").innerHTML = "Personnel with id: " + pid + " unassigned from project with id: " + project + " .";
+                        $("#managerModal").modal("show");
+            }
+            else{
+                res.json().then(error =>{
+                    alert(error.message);
+                });
+            }
+        });
+        
+    }
+
 function showPersonnelProjects(){
     var project =   `<h2 class="h2 text-center">Please enters Personnel id to see current projects:  </h2> 
                         <div class="input-group mb-3 w-25 mx-auto">
