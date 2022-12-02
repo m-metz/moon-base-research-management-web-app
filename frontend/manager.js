@@ -306,4 +306,7 @@ function updateUser(){
             }
         });
         
-        }
+    }
+function showPersonnelProjects(){
+    
+}
