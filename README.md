@@ -1,6 +1,6 @@
-# Project-Group-13
+# Moon Base Research Management System
 
-This is our group's web app for our Moon Base Project Management System.
+This is our group's web app for our Moon Base Research Management System.
 
 # Getting Started
 
@@ -18,7 +18,7 @@ This is our group's web app for our Moon Base Project Management System.
 1. Open the Webapp Frontend [frontend/index.html](frontend/index.html) in a web browser.
 1. (Optional) Import [MoonBase_Postman.postman_collection](MoonBase_Postman.postman_collection) into Postman if you want to test the web API directly.
 
-Congratulations! 🎉 You are now running our Moon Base Project Management System!
+Congratulations! 🎉 You are now running our Moon Base Research Management System!
 
 # Demo Functionality
 
