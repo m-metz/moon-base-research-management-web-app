@@ -1,6 +1,6 @@
 # Moon Base Research Management System
 
-This is our group's web app for our Moon Base Research Management System.
+This is our Moon Base Research Management System web app group project for ENSF 607 - Advanced Software Development and Architecture.
 
 # Getting Started
 
